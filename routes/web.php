@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Route as Route;
 
 Route::get('/', function () {
     return view('welcome');
