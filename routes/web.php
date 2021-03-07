@@ -17,3 +17,15 @@ use Illuminate\Support\Facades\Route as Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// USUARIOS \\
+
+Route::get('/user/create', 'UserController@create')->name('user.create');
+
+Route::post('/user/store', 'UserController@store')->name('user.store');
+
+Route::get('user/{user}/edit', 'UserController@edit')->name('user.edit');
+
+Route::put('/user/{user}', 'UserController@update')->name('user.update');
+
+Route::delete('user/{user}', 'UserController@destroy')->name('user.destroy');
