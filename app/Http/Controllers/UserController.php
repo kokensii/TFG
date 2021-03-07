@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('users.create');
     }
 
     /**
@@ -87,5 +87,9 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('index');
+    }
+
+    public function viewLogin(){
+        return view('users.login');
     }
 }
