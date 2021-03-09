@@ -30,7 +30,6 @@ Route::put('/user/{user}', 'UserController@update')->name('user.update');
 
 Route::delete('user/{user}', 'UserController@destroy')->name('user.destroy');
 
-Route::get('login', 'UserController@viewLogin')->name('user.viewLogin');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
