@@ -92,4 +92,8 @@ class UserController extends Controller
     public function viewLogin(){
         return view('users.login');
     }
+
+    public function profile(User $user){
+        return view('users.profile', compact('user'));
+    }
 }
