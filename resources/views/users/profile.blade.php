@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    {{ 'Mis datos' }}
+    {{$user->email }}
 @endsection
