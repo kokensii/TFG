@@ -15,6 +15,12 @@ class CreateCromosTable extends Migration
     {
         Schema::create('cromos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('temporada');
+            $table->string('urlImage');
+            $table->unsignedBigInteger('id_equipo');
+
+            $table->foreign('id_equipo')->references('id')->on('equipos');
             $table->timestamps();
         });
     }
