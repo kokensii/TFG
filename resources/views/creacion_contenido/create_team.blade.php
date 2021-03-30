@@ -3,7 +3,7 @@
 @section('title', 'Añadir equipo')
 
 @section('content')
-    <form action="{{route('user.store')}}" method="POST">
+    <form action="{{route('team.store')}}" method="POST">
         @csrf
         <label>
             Nombre:
