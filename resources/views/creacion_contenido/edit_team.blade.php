@@ -1,13 +1,15 @@
 @extends('layouts.plantilla')
 
-@section('title', 'Añadir equipo')
+@section('title', 'Editar equipo')
 
 @section('content')
-    <form action="{{route('user.store')}}" method="POST">
+    <form action="{{route('user.update', $user)}}" method="PUT">
         @csrf
+        @method('put')
+
         <label>
-            Nombre:
-            <input type="text" name="name" value="{{old('name')}}">
+            Name:
+            <input type="text" name="name" value="{{old('name', $user->name)}}">
         </label>
 
         @error('name')
@@ -19,7 +21,7 @@
         <br>
         <label>
             Temporada:
-            <input type="text" name="temporada" value="{{old('temporada')}}">
+            <input type="text" name="temporada" value="{{old('temporada', $user->email)}}">
         </label>
 
         @error('temporada')
@@ -31,16 +33,16 @@
         <br>
         <label>
             Imagen:
-            <input type="text" name="urlImage" value="{{old('urlmage')}}">
+            <input type="text" name="urlImage" value="{{old('urlImage', $user->password)}}">
         </label>
 
-        @error('urlImagen')
+        @error('urlImage')
             <br>
             <small>*{{$message}}</small>
             <br>
         @enderror
 
         <br>
-        <button type="submit">Enviar</button>
+        <button type="submit">Editar</button>
     </form>
 @endsection

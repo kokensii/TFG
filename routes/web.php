@@ -37,3 +37,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@admin')->middleware('is_admin')->name('admin');
 
 Route::get('/home/profile/{user}', 'UserController@profile')->name('profile');
+
+// MÓDULO CREACIÓN DE CONTENIDO
+
+Route::get('team/create', 'TeamController@create')->name('team.create');
+
+Route::post('team/store', 'TeamController@store')->name('team.store');
+
+Route::get('team/{team}/edit', 'TeamController@edit')->name('team.edit');
+
+Route::put('team/{team}', 'TeamController@update')->name('team.update');
