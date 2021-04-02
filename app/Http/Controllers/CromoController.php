@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cromo;
 
 class CromoController extends Controller
 {
@@ -23,7 +24,7 @@ class CromoController extends Controller
      */
     public function create()
     {
-        //
+        return view('creacion_contenido.create_cromo');
     }
 
     /**
@@ -34,7 +35,9 @@ class CromoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $team = Cromo::create($request->all());
+        
+        return redirect()->route('index');
     }
 
     /**
@@ -54,9 +57,9 @@ class CromoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Cromo $cromo)
     {
-        //
+        return view('creacion_contenido.edit_cromo', compact('cromo'));
     }
 
     /**
@@ -66,9 +69,11 @@ class CromoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Cromo $cromo)
     {
-        //
+        $cromo->update($request->all());
+
+        return redirect()->route('index');
     }
 
     /**
