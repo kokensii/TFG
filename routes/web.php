@@ -38,7 +38,7 @@ Route::get('/admin', 'AdminController@admin')->middleware('is_admin')->name('adm
 
 Route::get('/home/profile/{user}', 'UserController@profile')->name('profile');
 
-// MÓDULO CREACIÓN DE CONTENIDO
+// MÓDULO CREACIÓN DE CONTENIDO \\
 
 //// Equipo \\\\
 

@@ -3,7 +3,7 @@
 @section('title', 'Editar equipo')
 
 @section('content')
-    <form action="{{route('team.update', $team)}}" method="PUT">
+    <form action="{{route('team.update', $team)}}" method="post">
         @csrf
         @method('put')
 

@@ -73,7 +73,7 @@ class CromoController extends Controller
     {
         $cromo->update($request->all());
 
-        return redirect()->route('index');
+        return redirect()->route('cromo.create');
     }
 
     /**
