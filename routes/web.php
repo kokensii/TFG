@@ -40,6 +40,8 @@ Route::get('/home/profile/{user}', 'UserController@profile')->name('profile');
 
 // MÓDULO CREACIÓN DE CONTENIDO
 
+//// Equipo \\\\
+
 Route::get('team/create', 'TeamController@create')->name('team.create');
 
 Route::post('team/store', 'TeamController@store')->name('team.store');
@@ -47,3 +49,13 @@ Route::post('team/store', 'TeamController@store')->name('team.store');
 Route::get('team/{team}/edit', 'TeamController@edit')->name('team.edit');
 
 Route::put('team/{team}', 'TeamController@update')->name('team.update');
+
+//// Cromo \\\\
+
+Route::get('cromo/create', 'CromoController@create')->name('cromo.create');
+
+Route::post('cromo/store', 'CromoController@store')->name('cromo.store');
+
+Route::get('cromo/{cromo}/edit', 'CromoController@edit')->name('cromo.edit');
+
+Route::put('cromo/{cromo}', 'CromoController@update')->name('cromo.update');
