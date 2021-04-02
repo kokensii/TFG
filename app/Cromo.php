@@ -10,4 +10,3 @@ class Cromo extends Model
         'name', 'temporada', 'urlImage',
     ];
 }
-}
