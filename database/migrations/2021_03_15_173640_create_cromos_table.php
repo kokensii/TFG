@@ -18,7 +18,7 @@ class CreateCromosTable extends Migration
             $table->string('name');
             $table->string('temporada');
             $table->string('urlImage');
-            $table->unsignedBigInteger('id_equipo');
+            $table->bigInteger('id_equipo')->unsigned();
 
             $table->foreign('id_equipo')->references('id')->on('equipos');
             $table->timestamps();

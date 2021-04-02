@@ -3,13 +3,13 @@
 @section('title', 'Editar equipo')
 
 @section('content')
-    <form action="{{route('team.update', $user)}}" method="PUT">
+    <form action="{{route('team.update', $team)}}" method="PUT">
         @csrf
         @method('put')
 
         <label>
             Name:
-            <input type="text" name="name" value="{{old('name', $user->name)}}">
+            <input type="text" name="name" value="{{old('name', $team->name)}}">
         </label>
 
         @error('name')
@@ -21,7 +21,7 @@
         <br>
         <label>
             Temporada:
-            <input type="text" name="temporada" value="{{old('temporada', $user->email)}}">
+            <input type="text" name="temporada" value="{{old('temporada', $team->temporada)}}">
         </label>
 
         @error('temporada')
@@ -33,7 +33,7 @@
         <br>
         <label>
             Imagen:
-            <input type="text" name="urlImage" value="{{old('urlImage', $user->password)}}">
+            <input type="file" name="urlImage" value="{{old('urlImage', $team->urlImage)}}">
         </label>
 
         @error('urlImage')

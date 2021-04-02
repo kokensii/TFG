@@ -31,7 +31,7 @@
         <br>
         <label>
             Imagen:
-            <input type="text" name="urlImage" value="{{old('urlmage')}}">
+            <input type="file" name="urlImage" value="{{old('urlmage')}}">
         </label>
 
         @error('urlImagen')
