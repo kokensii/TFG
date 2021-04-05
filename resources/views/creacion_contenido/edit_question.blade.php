@@ -57,7 +57,7 @@
         <br>
         <label>
             Respuesta incorrecta 3:
-            <input type="text" name="bad_answer3" value="{{old('bad_answer3', $question->temporada)}}">
+            <input type="text" name="bad_answer3" value="{{old('bad_answer3', $question->bad_answer3)}}">
         </label>
 
         @error('bad_answer3')

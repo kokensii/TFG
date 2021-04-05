@@ -59,3 +59,13 @@ Route::post('cromo/store', 'CromoController@store')->name('cromo.store');
 Route::get('cromo/{cromo}/edit', 'CromoController@edit')->name('cromo.edit');
 
 Route::put('cromo/{cromo}', 'CromoController@update')->name('cromo.update');
+
+//// Cuestiones \\\\
+
+Route::get('question/create', 'QuestionController@create')->name('question.create');
+
+Route::post('question/store', 'QuestionController@store')->name('question.store');
+
+Route::get('question/{question}/edit', 'QuestionController@edit')->name('question.edit');
+
+Route::put('question/{question}', 'QuestionController@update')->name('question.update');
