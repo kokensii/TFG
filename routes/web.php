@@ -69,3 +69,13 @@ Route::post('question/store', 'QuestionController@store')->name('question.store'
 Route::get('question/{question}/edit', 'QuestionController@edit')->name('question.edit');
 
 Route::put('question/{question}', 'QuestionController@update')->name('question.update');
+
+//// Jornadas \\\\
+
+Route::get('jornada/create', 'JornadaController@create')->name('jornada.create');
+
+Route::post('jornada/store', 'JornadaController@store')->name('jornada.store');
+
+Route::get('jornada/{jornada}/edit', 'JornadaController@edit')->name('jornada.edit');
+
+Route::put('jornada/{jornada}', 'JornadaController@update')->name('jornada.update');
