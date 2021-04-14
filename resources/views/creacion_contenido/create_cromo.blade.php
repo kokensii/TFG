@@ -3,12 +3,15 @@
 @section('title', 'Añadir cromo')
 
 @section('content')
-    <form action="{{route('cromo.store')}}" method="POST">
+    <form class="formulario" action="{{route('cromo.store')}}" method="POST">
         @csrf
-        <label>
-            Nombre:
-            <input type="text" name="name" value="{{old('name')}}">
-        </label>
+
+        <div class="form-group row">
+            <label for="name" class="col-sm-1 col-form-label">Nombre</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
+            </div>
+        </div>
 
         @error('name')
             <br>
@@ -17,10 +20,13 @@
         @enderror
 
         <br>
-        <label>
-            Temporada:
-            <input type="text" name="temporada" value="{{old('temporada')}}">
-        </label>
+
+        <div class="form-group row">
+            <label for="temporada" class="col-sm-1 col-form-label">Temporada</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="temporada" name="temporada" value="{{old('temporada')}}">
+            </div>
+        </div>
 
         @error('temporada')
             <br>
@@ -29,10 +35,13 @@
         @enderror
 
         <br>
-        <label>
-            Imagen:
-            <input type="file" name="urlImage" value="{{old('urlmage')}}">
-        </label>
+        
+        <div class="form-group row">
+            <label for="urlImage" class="col-sm-1 col-form-label">Imagen</label>
+            <div class="col-sm-4">
+                <input type="file" class="form-control" id="urlImage" name="urlImage" value="{{old('urlImage')}}">
+            </div>
+        </div>
 
         @error('urlImagen')
             <br>
@@ -41,10 +50,13 @@
         @enderror
 
         <br>
-        <label>
-            Equipo:
-            <input type="text" name="id_equipo" value="{{old('id_equipo')}}">
-        </label>
+
+        <div class="form-group row">
+            <label for="id_equipo" class="col-sm-1 col-form-label">Equipo</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="id_equipo" name="id_equipo" value="{{old('id_equipo')}}">
+            </div>
+        </div>
 
         @error('id_equipo')
             <br>
