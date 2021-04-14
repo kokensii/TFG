@@ -3,12 +3,15 @@
 @section('title', 'Añadir pregunta')
 
 @section('content')
-    <form action="{{route('question.store')}}" method="POST">
+    <form class="formulario" action="{{route('question.store')}}" method="POST">
         @csrf
-        <label>
-            Pregunta:
-            <input type="text" name="question" value="{{old('question')}}">
-        </label>
+
+        <div class="form-group row">
+            <label for="question" class="col-sm-1 col-form-label">Pregunta</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="question" name="question" value="{{old('question')}}">
+            </div>
+        </div>
 
         @error('question')
             <br>
@@ -17,10 +20,13 @@
         @enderror
 
         <br>
-        <label>
-            Respuesta correcta:
-            <input type="text" name="correct_answer" value="{{old('correct_answer')}}">
-        </label>
+
+        <div class="form-group row">
+            <label for="correct_answer" class="col-sm-2 col-form-label">Respuesta correcta</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="correct_answer" name="correct_answer" value="{{old('correct_answer')}}">
+            </div>
+        </div>
 
         @error('correct_answer')
             <br>
@@ -29,10 +35,13 @@
         @enderror
 
         <br>
-        <label>
-            Respuesta incorrecta 1:
-            <input type="text" name="bad_answer1" value="{{old('bad_answer1')}}">
-        </label>
+
+        <div class="form-group row">
+            <label for="bad_answer1" class="col-sm-2 col-form-label">Respuesta incorrecta 1</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="bad_answer1" name="bad_answer1" value="{{old('bad_answer1')}}">
+            </div>
+        </div>
 
         @error('bad_answer1')
             <br>
@@ -41,10 +50,13 @@
         @enderror
 
         <br>
-        <label>
-            Respuesta incorrecta 2:
-            <input type="text" name="bad_answer2" value="{{old('bad_answer2')}}">
-        </label>
+
+        <div class="form-group row">
+            <label for="bad_answer2" class="col-sm-2 col-form-label">Respuesta incorrecta 2</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="bad_answer2" name="bad_answer2" value="{{old('bad_answer2')}}">
+            </div>
+        </div>
 
         @error('bad_answer2')
             <br>
@@ -53,10 +65,13 @@
         @enderror
 
         <br>
-        <label>
-            Respuesta incorrecta 3:
-            <input type="text" name="bad_answer3" value="{{old('bad_answer3')}}">
-        </label>
+        
+        <div class="form-group row">
+            <label for="bad_answer3" class="col-sm-2 col-form-label">Respuesta incorrecta 3</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="bad_answer3" name="bad_answer3" value="{{old('bad_answer3')}}">
+            </div>
+        </div>
 
         @error('bad_answer3')
             <br>
@@ -65,6 +80,6 @@
         @enderror
 
         <br>
-        <button type="submit">Enviar</button>
+        <button type="submit" class="btn btn-outline-primary">Enviar</button>
     </form>
 @endsection
