@@ -9,7 +9,11 @@
         <div class="form-group row">
             <label for="id_equipo_local1" class="col-sm-2 col-form-label">Equipo Local 1</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="id_equipo_local1" name="id_equipo_local1" value="{{old('id_equipo_local1')}}">
+            <select name="id_equipo_local1" style="height: 100%;">
+                @foreach($equipos as $equipo)
+                    <option value="{{$equipo->id}}">{{$equipo->name}}</option>
+                @endforeach
+            </select>
             </div>
         </div>
 
@@ -24,7 +28,11 @@
         <div class="form-group row">
             <label for="id_equipo_visitante1" class="col-sm-2 col-form-label">Equipo Visitante 1</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="id_equipo_visitante1" name="id_equipo_visitante1" value="{{old('id_equipo_visitante1')}}">
+            <select name="id_equipo_visitante1" style="height: 100%;">
+                @foreach($equipos as $equipo)
+                    <option value="{{$equipo->id}}">{{$equipo->name}}</option>
+                @endforeach
+            </select>
             </div>
         </div>
 
@@ -54,7 +62,11 @@
         <div class="form-group row">
             <label for="id_equipo_local2" class="col-sm-2 col-form-label">Equipo Local 2</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="id_equipo_local2" name="id_equipo_local2" value="{{old('id_equipo_local2')}}">
+            <select name="id_equipo_local2" style="height: 100%;">
+                @foreach($equipos as $equipo)
+                    <option value="{{$equipo->id}}">{{$equipo->name}}</option>
+                @endforeach
+            </select>
             </div>
         </div>
 
@@ -69,7 +81,11 @@
         <div class="form-group row">
             <label for="id_equipo_visitante2" class="col-sm-2 col-form-label">Equipo Visitante 2</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="id_equipo_visitante2" name="id_equipo_visitante2" value="{{old('id_equipo_visitante2')}}">
+            <select name="id_equipo_visitante2" style="height: 100%;">
+                @foreach($equipos as $equipo)
+                    <option value="{{$equipo->id}}">{{$equipo->name}}</option>
+                @endforeach
+            </select>
             </div>
         </div>
 

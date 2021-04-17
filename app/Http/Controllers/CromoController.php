@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cromo;
+use App\Models\Equipo;
 
 class CromoController extends Controller
 {
@@ -24,7 +25,8 @@ class CromoController extends Controller
      */
     public function create()
     {
-        return view('creacion_contenido.create_cromo');
+        $equipos = Equipo::get();
+        return view('creacion_contenido.create_cromo', compact('equipos'));
     }
 
     /**

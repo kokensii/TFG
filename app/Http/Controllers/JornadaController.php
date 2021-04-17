@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Jornada;
+use App\Models\Equipo;
 
 class JornadaController extends Controller
 {
@@ -24,7 +25,8 @@ class JornadaController extends Controller
      */
     public function create()
     {
-        return view('creacion_contenido.create_jornada');
+        $equipos = Equipo::get();
+        return view('creacion_contenido.create_jornada', compact('equipos'));
     }
 
     /**

@@ -38,6 +38,8 @@ Route::get('/admin', 'App\Http\Controllers\AdminController@admin')->middleware('
 
 Route::get('/home/profile/{user}', 'App\Http\Controllers\UserController@profile')->name('profile');
 
+Route::get('/users/index', 'App\Http\Controllers\UserController@index')->name('user.index');
+
 // MÓDULO CREACIÓN DE CONTENIDO \\
 
 //// Equipo \\\\

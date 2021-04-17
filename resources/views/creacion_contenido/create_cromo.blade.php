@@ -54,7 +54,11 @@
         <div class="form-group row">
             <label for="id_equipo" class="col-sm-1 col-form-label">Equipo</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="id_equipo" name="id_equipo" value="{{old('id_equipo')}}">
+            <select name="id_equipo" style="height: 100%;">
+                @foreach($equipos as $equipo)
+                    <option value="{{$equipo->id}}">{{$equipo->name}}</option>
+                @endforeach
+            </select>
             </div>
         </div>
 

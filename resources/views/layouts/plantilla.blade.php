@@ -22,19 +22,48 @@
 			  </button>
 			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item">
-				  		<a class="nav-link active" aria-current="page" href="{{ route('team.create')}}">Añadir equipo</a>
-				  	</li>
-				  	<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="{{ route('cromo.create')}}">Añadir cromo</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="{{ route('question.create')}}">Añadir pregunta</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="{{ route('jornada.create')}}">Añadir jornada</a>
-					</li>
-				  <li class="nav-item">
+					@guest
+						<li class="nav-item">
+							<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+						</li>
+						@if (Route::has('register'))
+							<li class="nav-item">
+								<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+							</li>
+						@endif
+					@else
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{ route('team.create')}}">Añadir equipo</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{ route('cromo.create')}}">Añadir cromo</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{ route('question.create')}}">Añadir pregunta</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{ route('jornada.create')}}">Añadir jornada</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								{{ Auth::user()->name }} <span class="caret"></span>
+							</a>
+							  <ul class="dropdown-menu mr-auto" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="{{ route('logout') }}"
+								   onclick="event.preventDefault();
+												 document.getElementById('logout-form').submit();">
+									{{ __('Logout') }}
+								</a>
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									@csrf
+								</form>
+								<a class="dropdown-item" href="{{ route('profile', Auth::user()) }}">
+									{{ __('My profile') }}
+								</a>
+							  </ul>
+						</li>
+					@endguest
+				  <!--<li class="nav-item">
 					<a class="nav-link" href="#">Link</a>
 				  </li>
 				  <li class="nav-item dropdown">
@@ -50,12 +79,12 @@
 				  </li>
 				  <li class="nav-item">
 					<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-				  </li>
+				  </li>-->
 				</ul>
-				<form class="d-flex">
+				<!--<form class="d-flex">
 				  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 				  <button class="btn btn-outline-success" type="submit">Search</button>
-				</form>
+				</form>-->
 			  </div>
 			</div>
 		  </nav>
