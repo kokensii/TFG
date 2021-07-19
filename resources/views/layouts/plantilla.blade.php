@@ -6,6 +6,8 @@
         <title>@yield('title')</title>
 		
 		<link rel="stylesheet" href="{{ asset('css/estiloForm.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+		<script src="{{ asset('js/navbarScript.js') }}" defer></script>
 		<!--<link href="{{ asset('css/prueba.css') }}" rel="stylesheet" type="text/css">
 		<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">-->
 		
@@ -15,7 +17,32 @@
 	<body>
 		<!-- header -->
 		<!-- nav -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		
+		<nav class="navbar">
+			<div class="brand-title">Cromitos</div>
+			<a href="#" class="toggle-button">
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
+			</a>
+			<div class="navbar-links">
+				<ul>
+					@guest
+						<li><a href="{{route('login')}}">{{__('Login')}}</a></li>
+						@if(Route::has('register'))
+							<li><a href="{{route('register')}}">{{__('Register')}}</a></li>
+						@endif  
+					@else
+						<li><a href="{{route('team.create')}}">Añadir equipo</a></li>
+						<li><a href="{{route('cromo.create')}}">Añadir cromo</a></li>
+						<li><a href="{{route('question.create')}}">Añadir pregunta</a></li>
+						<li><a href="{{route('jornada.create')}}">Añadir jornada</a></li>
+					@endguest
+				</ul>
+			</div>
+		</nav>
+
+		<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
 			  <a class="navbar-brand" href="#">Navbar</a>
 			  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +91,7 @@
 							  </ul>
 						</li>
 					@endguest
-				  <!--<li class="nav-item">
+				  <li class="nav-item">
 					<a class="nav-link" href="#">Link</a>
 				  </li>
 				  <li class="nav-item dropdown">
@@ -80,15 +107,16 @@
 				  </li>
 				  <li class="nav-item">
 					<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-				  </li>-->
+				  </li>
+
 				</ul>
-				<!--<form class="d-flex">
+				<form class="d-flex">
 				  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 				  <button class="btn btn-outline-success" type="submit">Search</button>
-				</form>-->
+				</form>
 			  </div>
 			</div>
-		  </nav>
+		  </nav>-->
 		<div class="wrapper">
 		    @yield('content')
 		</div>
