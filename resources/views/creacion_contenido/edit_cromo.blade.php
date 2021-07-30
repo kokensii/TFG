@@ -34,7 +34,7 @@
 
                 <div class="input-box">
                     <span class="details">Imagen</span>
-                    <input type="text" id="urlImage" name="urlImage" value="{{old('urlImage', $cromo->urlImage)}}">
+                    <input type="file" id="urlImage" name="urlImage" value="{{old('urlImage', $cromo->urlImage)}}">
                 </div>
             
                 @error('urlImage')
