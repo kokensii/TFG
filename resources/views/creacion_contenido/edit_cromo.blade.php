@@ -3,58 +3,61 @@
 @section('title', 'Editar equipo')
 
 @section('content')
-    <form action="{{route('cromo.update', $cromo)}}" method="post">
-        @csrf
-        @method('put')
+    <div class="form">
+        <div class="title">Editar cromo</div>
+        <form action="{{route('cromo.update', $cromo)}}" method="POST">
+            @csrf
+            @method('put')
 
-        <label>
-            Name:
-            <input type="text" name="name" value="{{old('name', $cromo->name)}}">
-        </label>
+            <div class="form-details">
+                <div class="input-box">
+                    <span class="details">Nombre</span>
+                    <input type="text" id="name" name="name" value="{{old('name', $cromo->name)}}">
+                </div>
 
-        @error('name')
-            <br>
-            <small>*{{$message}}</small>
-            <br>
-        @enderror
+                @error('name')
+                    <br>
+                    <small>*{{$message}}</small>
+                    <br>
+                @enderror
+            
+                <div class="input-box">
+                    <span class="details">Temporada</span>
+                    <input type="text" id="temporada" name="temporada" value="{{old('temporada', $cromo->temporada)}}">
+                </div>
 
-        <br>
-        <label>
-            Temporada:
-            <input type="text" name="temporada" value="{{old('temporada', $cromo->temporada)}}">
-        </label>
+                @error('temporada')
+                    <br>
+                    <small>*{{$message}}</small>
+                    <br>
+                @enderror
 
-        @error('temporada')
-            <br>
-            <small>*{{$message}}</small>
-            <br>
-        @enderror
+                <div class="input-box">
+                    <span class="details">Imagen</span>
+                    <input type="text" id="urlImage" name="urlImage" value="{{old('urlImage', $cromo->urlImage)}}">
+                </div>
+            
+                @error('urlImage')
+                    <br>
+                    <small>*{{$message}}</small>
+                    <br>
+                @enderror
 
-        <br>
-        <label>
-            Imagen:
-            <input type="file" name="urlImage" value="{{old('urlImage', $cromo->urlImage)}}">
-        </label>
+                <div class="input-box">
+                    <span class="details">Equipo</span>
+                    <input type="text" id="id_equipo" name="id_equipo" value="{{old('id_equipo', $cromo->id_equipo)}}">
+                </div>
 
-        @error('urlImage')
-            <br>
-            <small>*{{$message}}</small>
-            <br>
-        @enderror
+                @error('id_equipo')
+                    <br>
+                    <small>*{{$message}}</small>
+                    <br>
+                @enderror
 
-        <br>
-        <label>
-            Equipo:
-            <input type="text" name="id_equipo" value="{{old('id_equipo', $cromo->id_equipo)}}">
-        </label>
+                <div class="button">
+                    <input type="submit" value="Enviar">
+                </div>
 
-        @error('id_equipo')
-            <br>
-            <small>*{{$message}}</small>
-            <br>
-        @enderror
-
-        <br>
-        <button type="submit">Editar</button>
-    </form>
+        </form>
+    </div>
 @endsection
