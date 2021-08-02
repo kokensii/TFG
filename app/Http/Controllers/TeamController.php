@@ -51,6 +51,11 @@ class TeamController extends Controller
         return view('index'); //Devolver show_team o algo así
     }
 
+    public function showAll(){
+        $teams = Team::all();
+        return view('creacion_contenido.show_teams', compact('teams'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

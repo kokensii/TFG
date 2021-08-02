@@ -51,6 +51,11 @@ class QuestionController extends Controller
         //
     }
 
+    public function showAll(){
+        $questions = Question::all();
+        return view('creacion_contenido.show_questions()', compact('questions'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

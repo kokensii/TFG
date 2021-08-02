@@ -53,6 +53,11 @@ class JornadaController extends Controller
         //
     }
 
+    public function showAll(){
+        $jornadas = Jornada::all();
+        return view('creacion_contenido.show_jornadas', compact('jornadas'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

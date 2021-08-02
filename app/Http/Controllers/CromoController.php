@@ -53,6 +53,11 @@ class CromoController extends Controller
         //
     }
 
+    public function showAll(){
+        $cromos = Cromo::all();
+        return view('creacion_contenido.show_cromos', compact('cromos'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
