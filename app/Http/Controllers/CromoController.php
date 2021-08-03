@@ -54,7 +54,7 @@ class CromoController extends Controller
     }
 
     public function showAll(){
-        $cromos = Cromo::all();
+        $cromos = Cromo::paginate(2);
         return view('creacion_contenido.show_cromos', compact('cromos'));
     }
 

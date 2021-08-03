@@ -7,9 +7,8 @@
 		
 		<link rel="stylesheet" href="{{ asset('css/estiloForm.css') }}">
 		<link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+		
 		<script src="{{ asset('js/navbarScript.js') }}" defer></script>
-		<!--<link href="{{ asset('css/prueba.css') }}" rel="stylesheet" type="text/css">
-		<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">-->
 		
 		<!-- favicon -->
 		<!-- estilos -->

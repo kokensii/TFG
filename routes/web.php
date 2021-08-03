@@ -62,6 +62,8 @@ Route::get('cromo/{cromo}/edit', 'App\Http\Controllers\CromoController@edit')->n
 
 Route::put('cromo/{cromo}', 'App\Http\Controllers\CromoController@update')->name('cromo.update');
 
+Route::get('cromo/showAll', 'App\Http\Controllers\CromoController@showAll')->name('cromo.showAll');
+
 //// Cuestiones \\\\
 
 Route::get('question/create', 'App\Http\Controllers\QuestionController@create')->name('question.create');
