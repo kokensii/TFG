@@ -7,7 +7,5 @@
         @foreach($cromos as $cromo)
             <li>{{$cromo->name}}</li>
         @endforeach
-
-        {{ $cromos->links() }}
     </div>
 @endsection
