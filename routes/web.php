@@ -52,6 +52,10 @@ Route::get('team/{team}/edit', 'App\Http\Controllers\TeamController@edit')->name
 
 Route::put('team/{team}', 'App\Http\Controllers\TeamController@update')->name('team.update');
 
+Route::delete('team/{team}', 'App\Http\Controllers\TeamController@destroy')->name('team.destroy');
+
+Route::get('team/showAll', 'App\Http\Controllers\TeamController@showAll')->name('team.showAll');
+
 //// Cromo \\\\
 
 Route::get('cromo/create', 'App\Http\Controllers\CromoController@create')->name('cromo.create');
@@ -62,6 +66,10 @@ Route::get('cromo/{cromo}/edit', 'App\Http\Controllers\CromoController@edit')->n
 
 Route::put('cromo/{cromo}', 'App\Http\Controllers\CromoController@update')->name('cromo.update');
 
+Route::delete('cromo/{cromo}', 'App\Http\Controllers\CromoController@destroy')->name('cromo.destroy');
+
+Route::get('cromo/showAll', 'App\Http\Controllers\CromoController@showAll')->name('cromo.showAll');
+
 //// Cuestiones \\\\
 
 Route::get('question/create', 'App\Http\Controllers\QuestionController@create')->name('question.create');
@@ -71,6 +79,10 @@ Route::post('question/store', 'App\Http\Controllers\QuestionController@store')->
 Route::get('question/{question}/edit', 'App\Http\Controllers\QuestionController@edit')->name('question.edit');
 
 Route::put('question/{question}', 'App\Http\Controllers\QuestionController@update')->name('question.update');
+
+Route::delete('question/{question}', 'App\Http\Controllers\QuestionController@destroy')->name('question.destroy');
+
+Route::get('question/showAll', 'App\Http\Controllers\QuestionController@showAll')->name('question.showAll');
 
 //// Jornadas \\\\
 
