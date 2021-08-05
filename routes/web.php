@@ -54,6 +54,8 @@ Route::put('team/{team}', 'App\Http\Controllers\TeamController@update')->name('t
 
 Route::delete('team/{team}', 'App\Http\Controllers\TeamController@destroy')->name('team.destroy');
 
+Route::get('team/showAll', 'App\Http\Controllers\TeamController@showAll')->name('team.showAll');
+
 //// Cromo \\\\
 
 Route::get('cromo/create', 'App\Http\Controllers\CromoController@create')->name('cromo.create');
@@ -80,6 +82,8 @@ Route::put('question/{question}', 'App\Http\Controllers\QuestionController@updat
 
 Route::delete('question/{question}', 'App\Http\Controllers\QuestionController@destroy')->name('question.destroy');
 
+Route::get('question/showAll', 'App\Http\Controllers\QuestionController@showAll')->name('question.showAll');
+
 //// Jornadas \\\\
 
 Route::get('jornada/create', 'App\Http\Controllers\JornadaController@create')->name('jornada.create');
@@ -91,3 +95,5 @@ Route::get('jornada/{jornada}/edit', 'App\Http\Controllers\JornadaController@edi
 Route::put('jornada/{jornada}', 'App\Http\Controllers\JornadaController@update')->name('jornada.update');
 
 Route::delete('jornada/{jornada}', 'App\Http\Controllers\JornadaController@destroy')->name('jornada.destroy');
+
+Route::get('jornada/showAll', 'App\Http\Controllers\JornadaController@showAll')->name('jornada.showAll');
