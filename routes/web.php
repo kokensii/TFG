@@ -97,3 +97,9 @@ Route::put('jornada/{jornada}', 'App\Http\Controllers\JornadaController@update')
 Route::delete('jornada/{jornada}', 'App\Http\Controllers\JornadaController@destroy')->name('jornada.destroy');
 
 Route::get('jornada/showAll', 'App\Http\Controllers\JornadaController@showAll')->name('jornada.showAll');
+
+// MÓDULO INTERACCION USUARIO \\
+
+//// Cuestiones \\\\
+
+Route::get('question/answer', 'App\Http\Controllers\QuestionController@answer')->name('question.answer');

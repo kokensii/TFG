@@ -1,9 +1,18 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
 .navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
-    color: gray;
+    background-color: #333;
+    color: white;
 }
 
 .brand-title{
@@ -23,7 +32,7 @@
 
 .navbar-links li a{
     text-decoration: none;
-    color: gray;
+    color: white;
     padding: 1rem;
     display: block;
 }
@@ -46,7 +55,7 @@
 .toggle-button .bar{
     height: 3px;
     width: 100%;
-    background-color: gray;
+    background-color: white;
     border-radius: 10px;
 }
 

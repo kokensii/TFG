@@ -93,4 +93,11 @@ class QuestionController extends Controller
 
         return redirect()->route('question.showAll');
     }
+
+    //Hecho desde hoy.
+
+    public function answer()
+    {
+        return view('interaccion_usuarios.answer_question');
+    }
 }
