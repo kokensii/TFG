@@ -91,4 +91,11 @@ class QuestionController extends Controller
     {
         //
     }
+
+    //Hecho desde hoy.
+
+    public function answer()
+    {
+        return view('interaccion_usuarios.answer_question');
+    }
 }

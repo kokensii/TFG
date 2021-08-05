@@ -81,3 +81,10 @@ Route::post('jornada/store', 'App\Http\Controllers\JornadaController@store')->na
 Route::get('jornada/{jornada}/edit', 'App\Http\Controllers\JornadaController@edit')->name('jornada.edit');
 
 Route::put('jornada/{jornada}', 'App\Http\Controllers\JornadaController@update')->name('jornada.update');
+
+// MÓDULO INTERACCION USUARIO \\
+
+//// Cuestiones \\\\
+
+Route::get('question/answer', 'App\Http\Controllers\QuestionController@answer')->name('question.answer');
+

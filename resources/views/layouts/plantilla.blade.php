@@ -37,24 +37,6 @@
 						<li><a href="{{route('cromo.create')}}">Añadir cromo</a></li>
 						<li><a href="{{route('question.create')}}">Añadir pregunta</a></li>
 						<li><a href="{{route('jornada.create')}}">Añadir jornada</a></li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								{{ Auth::user()->name }} <span class="caret"></span>
-							</a>
-							  <ul class="dropdown-menu mr-auto" aria-labelledby="navbarDropdownMenuLink">
-								<a class="dropdown-item" href="{{ route('logout') }}"
-								   onclick="event.preventDefault();
-												 document.getElementById('logout-form').submit();">
-									{{ __('Logout') }}
-								</a>
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-									@csrf
-								</form>
-								<a class="dropdown-item" href="{{ route('profile', Auth::user()) }}">
-									{{ __('My profile') }}
-								</a>
-							  </ul>
-						</li>
 					@endguest
 				</ul>
 			</div>
