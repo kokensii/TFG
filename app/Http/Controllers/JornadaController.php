@@ -95,4 +95,12 @@ class JornadaController extends Controller
 
         return redirect()->route('jornada.showAll');
     }
+
+
+    public function porra(Jornada $jornada)
+    {
+        //return redirect()->route('jornada.showAll');
+        return view('interaccion_usuarios.play_porra');
+
+    }
 }

@@ -103,3 +103,7 @@ Route::get('jornada/showAll', 'App\Http\Controllers\JornadaController@showAll')-
 //// Cuestiones \\\\
 
 Route::get('question/answer', 'App\Http\Controllers\QuestionController@answer')->name('question.answer');
+
+//// Jornadas \\\\
+
+Route::get('jornada/porra', 'App\Http\Controllers\JornadaController@porra')->name('jornada.porra');
