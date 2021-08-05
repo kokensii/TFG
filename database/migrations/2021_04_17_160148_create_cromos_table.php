@@ -20,7 +20,7 @@ class CreateCromosTable extends Migration
             $table->string('urlImage');
             $table->bigInteger('id_equipo')->unsigned();
 
-            $table->foreign('id_equipo')->references('id')->on('equipos');
+            $table->foreign('id_equipo')->references('id')->on('equipos')->onDelete('cascade');
             $table->timestamps();
         });
     }

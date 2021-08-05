@@ -6,7 +6,7 @@
     <div class="wrapper">
         <div class="form">
             <div class="title">Añadir Equipo</div>
-            <form action="{{route('jornada.store')}}" method="POST">
+            <form action="{{route('team.store')}}" method="POST">
                 @csrf
                 <div class="form-details">
                     <div class="input-box">
