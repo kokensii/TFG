@@ -52,7 +52,7 @@ class TeamController extends Controller
     }
 
     public function showAll(){
-        $teams = Team::all();
+        $teams = Equipo::all();
         return view('creacion_contenido.show_teams', compact('teams'));
     }
 
@@ -87,8 +87,10 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Equipo $team)
     {
-        //
+        $team->delete();
+
+        return redirect()->route('team.showAll');
     }
 }

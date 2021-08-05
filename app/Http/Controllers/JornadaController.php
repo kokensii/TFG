@@ -89,8 +89,10 @@ class JornadaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Jornada $jornada)
     {
-        //
+        $jornada->delete();
+
+        return redirect()->route('jornada.showAll');
     }
 }
