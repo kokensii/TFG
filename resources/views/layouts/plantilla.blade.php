@@ -6,7 +6,8 @@
         <title>@yield('title')</title>
 		
 		<link rel="stylesheet" href="{{ asset('css/estiloForm.css') }}">
-		<link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/navBar2.css') }}">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		
 		<script src="{{ asset('js/navbarScript.js') }}" defer></script>
 		
@@ -19,12 +20,11 @@
 		
 		<nav class="navbar">
 			<div class="brand-title">Cromitos</div>
-			<a href="#" class="toggle-button">
-				<span class="bar"></span>
-				<span class="bar"></span>
-				<span class="bar"></span>
-			</a>
-			<div class="navbar-links">
+			<label for="btn" class="icon">
+				<span class="fa fa-bars"></span>
+			</label>
+			<input type="checkbox" id="btn" style="display: none;">
+			
 				<ul>
 					@guest
 						<li><a href="{{route('login')}}">{{__('Login')}}</a></li>
@@ -32,31 +32,49 @@
 							<li><a href="{{route('register')}}">{{__('Register')}}</a></li>
 						@endif  
 					@else
+						<li>
+							<label for="btn-1" class="show">Listados →</label>
+							<a href="#">Listados</a>
+							<input type="checkbox" id="btn-1">
+							<ul>
+								<li><a href="#">Equipos</a></li>
+								<li><a href="#">Cromos</a></li>
+								<li><a href="#">Cuestiones</a></li>
+								<li><a href="#">Jornadas</a></li>
+							</ul>
+						</li>
 						<li><a href="{{route('team.create')}}">Añadir equipo</a></li>
 						<li><a href="{{route('cromo.create')}}">Añadir cromo</a></li>
 						<li><a href="{{route('question.create')}}">Añadir pregunta</a></li>
 						<li><a href="{{route('jornada.create')}}">Añadir jornada</a></li>
-						<li class="nav-item dropdown">
+						<li>
+							<label for="btn-2" class="show">{{ Auth::user()->name }} →</label>
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								{{ Auth::user()->name }} <span class="caret"></span>
 							</a>
+							<input type="checkbox" id="btn-2">
 							  <ul class="dropdown-menu mr-auto" aria-labelledby="navbarDropdownMenuLink">
-								<a class="dropdown-item" href="{{ route('logout') }}"
+								<li>
+									<a href="{{ route('logout') }}"
 								   onclick="event.preventDefault();
 												 document.getElementById('logout-form').submit();">
 									{{ __('Logout') }}
-								</a>
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-									@csrf
-								</form>
-								<a class="dropdown-item" href="{{ route('profile', Auth::user()) }}">
-									{{ __('My profile') }}
-								</a>
+									</a>
+								
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+										@csrf
+									</form>
+								</li>
+								<li>
+									<a href="{{ route('profile', Auth::user()) }}">
+										{{ __('My profile') }}
+									</a>
+								</li>
 							  </ul>
 						</li>
 					@endguest
 				</ul>
-			</div>
+			
 		</nav>
 
 		<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">

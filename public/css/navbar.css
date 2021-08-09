@@ -7,12 +7,17 @@ body{
     padding: 0;
 }
 
+nav:after{
+    content: '';
+    clear: both;
+    display: table;
+}
+
 .navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    color: white;
+    background-color: #1b1b1b;
 }
 
 .brand-title{
@@ -21,24 +26,40 @@ body{
 }
 
 .navbar-links ul{
+    float: right;
     margin: 0;
     padding: 0;
-    display: flex;
+    position: relative;
+    list-style: none;
 }
 
 .navbar-links ul li{
-    list-style: none;
+    display: inline-block;
+    background: black;
 }
 
 .navbar-links li a{
     text-decoration: none;
     color: white;
     padding: 1rem;
+    line-height: 70px;
     display: block;
 }
 
 .navbar-links li:hover{
     background-color: #555;
+}
+
+.navbar-links ul ul{
+    position: absolute;
+}
+
+.navbar-links ul ul li{
+    position: relative;
+    margin: 0px;
+    width: 150px;
+    float: none;
+    display: list-item;
 }
 
 .toggle-button{
@@ -65,7 +86,7 @@ body{
     }
 
     .navbar-links{
-         display: none;
+        display: none;
         width: 100%;
     }
 

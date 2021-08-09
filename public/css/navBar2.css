@@ -1,0 +1,174 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: #f2f2f2;
+}
+
+.navbar{
+    background: #1b1b1b;
+}
+
+.navbar:after{
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.navbar .brand-title{
+    float: left;
+    color: white;
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 70px;
+    padding-left: 60px;
+}
+
+.navbar ul{
+    float: right;
+    list-style: none;
+    margin-right: 40px;
+    position: relative;
+}
+
+.navbar ul li{
+    float: left;
+    background: #1b1b1b;
+    margin: 0 5px;
+}
+
+.navbar ul li a{
+    color: white;
+    text-decoration: none;
+    line-height: 70px;
+    font-size: 18px;
+    padding: 8px 15px;
+}
+
+.navbar ul li a:hover{
+    color: cyan;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #33ffff,
+                0 0 5px #66ffff;
+}
+
+.navbar ul ul li a:hover{
+    color: cyan;
+    box-shadow: none;
+}
+
+.navbar ul ul{
+    position: absolute;
+    top: 90px;
+    border-top: 3px solid cyan;
+    opacity: 0;
+    visibility: hidden;
+    transition: top .3s;
+}
+
+.navbar ul li:hover > ul{
+    top: 70px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.navbar ul ul li{
+    position: relative;
+    margin: 0px;
+    width: 150px;
+    float: none;
+    display: list-item;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.navbar ul ul li a{
+    line-height: 50px;
+}
+
+.navbar ul ul ul li{
+    position: relative;
+    top: -70px;
+    left: 150px;
+}
+
+.show, .icon, .navbar ul li input{
+    display: none;
+}
+
+@media all and (max-width: 968px){
+    .navbar ul{
+        margin-right: 0px;
+        float: left;
+    }
+
+    .navbar .brand-title{
+        padding-left: 30px;
+        width: 100%;
+    }
+
+    .navbar ul li, .navbar ul ul li{
+        display: block;
+        width: 100%;
+    }
+
+    .navbar ul ul{
+        top: 70px;
+        position: static;
+        border-top: none;
+        float: none;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .navbar ul ul li{
+        border-bottom: 0px;
+    }
+
+    .navbar ul ul a{
+        padding-left: 40px;
+    }
+
+    .show{
+        display: block;
+        color: white;
+        font-size: 18px;
+        padding: 0 20px;
+        line-height: 70px;
+        cursor: pointer;
+    }
+
+    .show:hover{
+        color: cyan;
+    }
+
+    .icon{
+        display: block;
+        color: white;
+        position: absolute;
+        right: 40px;
+        line-height: 70px;
+        font-size: 25px;
+        cursor: pointer;
+    }
+
+    .icon:hover{
+        display: block;
+    }
+
+    .navbar ul li a:hover{
+        box-shadow: none;
+    }
+
+    .show + a, ul{
+        display: none;
+    }
+
+    [id^=btn]:checked + ul{
+        display: block;
+    }
+}
