@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Jornada;
-use App\Models\Equipo;
+use App\Models\Round;
+use App\Models\Team;
 
 class JornadaController extends Controller
 {
@@ -25,8 +25,8 @@ class JornadaController extends Controller
      */
     public function create()
     {
-        $equipos = Equipo::get();
-        return view('creacion_contenido.create_jornada', compact('equipos'));
+        $teams = Team::get();
+        return view('creacion_contenido.create_jornada', compact('teams'));
     }
 
     /**
@@ -37,7 +37,7 @@ class JornadaController extends Controller
      */
     public function store(Request $request)
     {
-        $jornada = Jornada::create($request->all());
+        $round = Round::create($request->all());
         
         return redirect()->route('index');
     }
@@ -54,8 +54,8 @@ class JornadaController extends Controller
     }
 
     public function showAll(){
-        $jornadas = Jornada::all();
-        return view('creacion_contenido.show_jornadas', compact('jornadas'));
+        $rounds = Round::all();
+        return view('creacion_contenido.show_jornadas', compact('rounds'));
     }
 
     /**
@@ -64,9 +64,9 @@ class JornadaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Jornada $jornada)
+    public function edit(Round $round)
     {
-        return view('creacion_contenido.edit_jornada', compact('jornada'));
+        return view('creacion_contenido.edit_jornada', compact('round'));
     }
 
     /**
@@ -76,11 +76,11 @@ class JornadaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Jornada $jornada)
+    public function update(Request $request, Round $round)
     {
-        $jornada->update($request->all());
+        $round->update($request->all());
 
-        return redirect()->route('jornada.create');
+        return redirect()->route('round.create');
     }
 
     /**
@@ -89,18 +89,19 @@ class JornadaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Jornada $jornada)
+    public function destroy(Round $round)
     {
-        $jornada->delete();
+        $round->delete();
 
-        return redirect()->route('jornada.showAll');
+        return redirect()->route('round.showAll');
     }
 
 
-    public function porra(Jornada $jornada)
+    public function porra()
     {
-        //return redirect()->route('jornada.showAll');
-        return view('interaccion_usuarios.play_porra');
+        //return redirect()->route('round.showAll');
+        $rounds = Round::all();
+        return view('interaccion_usuarios.play_porra', compact('rounds'));
 
     }
 }

@@ -1,19 +1,19 @@
 @extends('layouts.plantilla')
 
-@section('title', 'Listado jornadas')
+@section('title', 'Listado rounds')
 
 @section('content')
     <div class="wrapper">
         <div class="form-listado">
-            @foreach($jornadas as $jornada)
+            @foreach($rounds as $round)
                 <div class="form-all">
-                    <li>{{ $jornada->id }}</li>
-                    <form action="{{ route('jornada.destroy', $jornada) }}" method="POST">
+                    <li>{{ $round->id }}</li>
+                    <form action="{{ route('round.destroy', $round) }}" method="POST">
                         @csrf
                         @method('delete')
                         <input type="submit" value="Eliminar">
                     </form>
-                    <form action="{{ route('jornada.edit', $jornada) }}" method="GET">
+                    <form action="{{ route('round.edit', $round) }}" method="GET">
                         @csrf
                         <input type="submit" value="Editar">
                     </form>

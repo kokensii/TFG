@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('title', 'Editar equipo')
+@section('title', 'Editar team')
 
 @section('content')
     <form class="formulario" action="{{route('team.update', $team)}}" method="post">
@@ -23,13 +23,13 @@
         <br>
 
         <div class="form-group row">
-            <label for="temporada" class="col-sm-1 col-form-label">Temporada</label>
+            <label for="season" class="col-sm-1 col-form-label">Temporada</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="temporada" name="temporada" value="{{old('temporada', $team->temporada)}}">
+                <input type="text" class="form-control" id="season" name="season" value="{{old('season', $team->season)}}">
             </div>
         </div>
 
-        @error('temporada')
+        @error('season')
             <br>
             <small>*{{$message}}</small>
             <br>

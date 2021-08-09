@@ -1,18 +1,18 @@
 @extends('layouts.plantilla')
 
-@section('title', 'Editar jornada')
+@section('title', 'Editar round')
 
 @section('content')
-    <form action="{{route('jornada.update', $jornada)}}" method="post">
+    <form action="{{route('round.update', $round)}}" method="post">
         @csrf
         @method('put')
 
         <label>
-            Equipo Local 1:
-            <input type="text" name="id_equipo_local1" value="{{old('id_equipo_local1', $jornada->id_equipo_local1)}}">
+            Equipo Local:
+            <input type="text" name="id_home_team" value="{{old('id_home_team', $round->id_home_team)}}">
         </label>
 
-        @error('id_equipo_local1')
+        @error('id_home_team')
             <br>
             <small>*{{$message}}</small>
             <br>
@@ -20,11 +20,11 @@
 
         <br>
         <label>
-            Equipo Visitante 1:
-            <input type="text" name="id_equipo_visitante2" value="{{old('id_equipo_local2', $jornada->id_equipo_visitante1)}}">
+            Equipo Visitante:
+            <input type="text" name="id_away_team" value="{{old('id_away_team', $round->id_away_team)}}">
         </label>
 
-        @error('id_equipo_visitante1')
+        @error('id_away_team')
             <br>
             <small>*{{$message}}</small>
             <br>
@@ -32,47 +32,11 @@
 
         <br>
         <label>
-            Resultado 1:
-            <input type="text" name="resultado1" value="{{old('resultado1', $jornada->resultado1)}}">
+            Resultado:
+            <input type="text" name="result" value="{{old('result', $round->result)}}">
         </label>
 
-        @error('resultado1')
-            <br>
-            <small>*{{$message}}</small>
-            <br>
-        @enderror
-
-        <br>
-        <label>
-            Equipo Local 2:
-            <input type="text" name="id_equipo_local2" value="{{old('id_equipo_local2', $jornada->id_equipo_local2)}}">
-        </label>
-
-        @error('id_equipo_local2')
-            <br>
-            <small>*{{$message}}</small>
-            <br>
-        @enderror
-
-        <br>
-        <label>
-            Equipo Visitante 2:
-            <input type="text" name="id_equipo_visitante2" value="{{old('id_equipo_visitante2', $jornada->id_equipo_visitante2)}}">
-        </label>
-
-        @error('id_equipo_visitante2')
-            <br>
-            <small>*{{$message}}</small>
-            <br>
-        @enderror
-
-        <br>
-        <label>
-            Resultado 2:
-            <input type="text" name="resultado2" value="{{old('resultado2', $jornada->resultado2)}}">
-        </label>
-
-        @error('resultado2')
+        @error('result')
             <br>
             <small>*{{$message}}</small>
             <br>

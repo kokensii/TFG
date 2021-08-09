@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('title', 'Añadir equipo')
+@section('title', 'Añadir Equipo')
 
 @section('content')
     <div class="wrapper">
@@ -22,10 +22,10 @@
 
                     <div class="input-box">
                         <span class="details">Temporada</span>
-                        <input type="text" id="temporada" name="temporada" value="{{old('temporada')}}" required>
+                        <input type="text" id="season" name="season" value="{{old('season')}}" required>
                     </div>
 
-                    @error('temporada')
+                    @error('season')
                         <br>
                         <small>*{{$message}}</small>
                         <br>

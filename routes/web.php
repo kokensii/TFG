@@ -42,7 +42,7 @@ Route::get('/users/index', 'App\Http\Controllers\UserController@index')->name('u
 
 // MÓDULO CREACIÓN DE CONTENIDO \\
 
-//// Equipo \\\\
+//// Team \\\\
 
 Route::get('team/create', 'App\Http\Controllers\TeamController@create')->name('team.create');
 
@@ -56,19 +56,19 @@ Route::delete('team/{team}', 'App\Http\Controllers\TeamController@destroy')->nam
 
 Route::get('team/showAll', 'App\Http\Controllers\TeamController@showAll')->name('team.showAll');
 
-//// Cromo \\\\
+//// Card \\\\
 
-Route::get('cromo/create', 'App\Http\Controllers\CromoController@create')->name('cromo.create');
+Route::get('card/create', 'App\Http\Controllers\CromoController@create')->name('card.create');
 
-Route::post('cromo/store', 'App\Http\Controllers\CromoController@store')->name('cromo.store');
+Route::post('card/store', 'App\Http\Controllers\CromoController@store')->name('card.store');
 
-Route::get('cromo/{cromo}/edit', 'App\Http\Controllers\CromoController@edit')->name('cromo.edit');
+Route::get('card/{card}/edit', 'App\Http\Controllers\CromoController@edit')->name('card.edit');
 
-Route::put('cromo/{cromo}', 'App\Http\Controllers\CromoController@update')->name('cromo.update');
+Route::put('card/{card}', 'App\Http\Controllers\CromoController@update')->name('card.update');
 
-Route::delete('cromo/{cromo}', 'App\Http\Controllers\CromoController@destroy')->name('cromo.destroy');
+Route::delete('card/{card}', 'App\Http\Controllers\CromoController@destroy')->name('card.destroy');
 
-Route::get('cromo/showAll', 'App\Http\Controllers\CromoController@showAll')->name('cromo.showAll');
+Route::get('card/showAll', 'App\Http\Controllers\CromoController@showAll')->name('card.showAll');
 
 //// Cuestiones \\\\
 
@@ -86,17 +86,17 @@ Route::get('question/showAll', 'App\Http\Controllers\QuestionController@showAll'
 
 //// Jornadas \\\\
 
-Route::get('jornada/create', 'App\Http\Controllers\JornadaController@create')->name('jornada.create');
+Route::get('round/create', 'App\Http\Controllers\JornadaController@create')->name('round.create');
 
-Route::post('jornada/store', 'App\Http\Controllers\JornadaController@store')->name('jornada.store');
+Route::post('round/store', 'App\Http\Controllers\JornadaController@store')->name('round.store');
 
-Route::get('jornada/{jornada}/edit', 'App\Http\Controllers\JornadaController@edit')->name('jornada.edit');
+Route::get('round/{round}/edit', 'App\Http\Controllers\JornadaController@edit')->name('round.edit');
 
-Route::put('jornada/{jornada}', 'App\Http\Controllers\JornadaController@update')->name('jornada.update');
+Route::put('round/{round}', 'App\Http\Controllers\JornadaController@update')->name('round.update');
 
-Route::delete('jornada/{jornada}', 'App\Http\Controllers\JornadaController@destroy')->name('jornada.destroy');
+Route::delete('round/{round}', 'App\Http\Controllers\JornadaController@destroy')->name('round.destroy');
 
-Route::get('jornada/showAll', 'App\Http\Controllers\JornadaController@showAll')->name('jornada.showAll');
+Route::get('round/showAll', 'App\Http\Controllers\JornadaController@showAll')->name('round.showAll');
 
 // MÓDULO INTERACCION USUARIO \\
 
@@ -106,4 +106,7 @@ Route::get('question/answer', 'App\Http\Controllers\QuestionController@answer')-
 
 //// Jornadas \\\\
 
-Route::get('jornada/porra', 'App\Http\Controllers\JornadaController@porra')->name('jornada.porra');
+Route::get('round/porra', 'App\Http\Controllers\JornadaController@porra')->name('round.porra');
+
+
+/* Añadir los controladores de los nuevos modelos y las rutas */

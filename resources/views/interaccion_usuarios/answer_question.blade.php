@@ -8,7 +8,7 @@
     <div class="wrapper">
         <div class="form">
             <div class="title">Pregunta en cuestion</div>
-            <form action="{{route('jornada.store')}}" method="POST">
+            <form action="{{route('round.store')}}" method="POST">
                 @csrf
                     <div class="form-group row">
                         <div class="col-sm-10">

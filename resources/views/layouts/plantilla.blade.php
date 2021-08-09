@@ -43,10 +43,10 @@
 								<li><a href="#">Jornadas</a></li>
 							</ul>
 						</li>
-						<li><a href="{{route('team.create')}}">Añadir equipo</a></li>
-						<li><a href="{{route('cromo.create')}}">Añadir cromo</a></li>
-						<li><a href="{{route('question.create')}}">Añadir pregunta</a></li>
-						<li><a href="{{route('jornada.create')}}">Añadir jornada</a></li>
+						<li><a href="{{route('team.create')}}">Añadir Equipo</a></li>
+						<li><a href="{{route('card.create')}}">Añadir Cromo</a></li>
+						<li><a href="{{route('question.create')}}">Añadir Pregunta</a></li>
+						<li><a href="{{route('round.create')}}">Añadir Jornada</a></li>
 						<li>
 							<label for="btn-2" class="show">{{ Auth::user()->name }} →</label>
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -96,16 +96,16 @@
 						@endif
 					@else
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="{{ route('team.create')}}">Añadir equipo</a>
+							<a class="nav-link active" aria-current="page" href="{{ route('team.create')}}">Añadir team</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="{{ route('cromo.create')}}">Añadir cromo</a>
+							<a class="nav-link active" aria-current="page" href="{{ route('card.create')}}">Añadir card</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link active" aria-current="page" href="{{ route('question.create')}}">Añadir pregunta</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="{{ route('jornada.create')}}">Añadir jornada</a>
+							<a class="nav-link active" aria-current="page" href="{{ route('round.create')}}">Añadir round</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

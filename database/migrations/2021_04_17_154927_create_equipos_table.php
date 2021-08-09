@@ -13,10 +13,10 @@ class CreateEquiposTable extends Migration
      */
     public function up()
     {
-        Schema::create('equipos', function (Blueprint $table) {
+        Schema::create('teams', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('temporada');
+            $table->string('season');
             $table->string('urlImage');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateEquiposTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipos');
+        Schema::dropIfExists('teams');
     }
 }

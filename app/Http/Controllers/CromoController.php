@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cromo;
-use App\Models\Equipo;
+use App\Models\Card;
+use App\Models\Team;
 
 class CromoController extends Controller
 {
@@ -25,8 +25,8 @@ class CromoController extends Controller
      */
     public function create()
     {
-        $equipos = Equipo::get();
-        return view('creacion_contenido.create_cromo', compact('equipos'));
+        $teams = Team::get();
+        return view('creacion_contenido.create_cromo', compact('teams'));
     }
 
     /**
@@ -37,7 +37,7 @@ class CromoController extends Controller
      */
     public function store(Request $request)
     {
-        $team = Cromo::create($request->all());
+        $team = Card::create($request->all());
         
         return redirect()->route('index');
     }
@@ -54,7 +54,7 @@ class CromoController extends Controller
     }
 
     public function showAll(){
-        $cromos = Cromo::all();
+        $cromos = Card::all();
         return view('creacion_contenido.show_cromos', compact('cromos'));
     }
 
@@ -64,9 +64,9 @@ class CromoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cromo $cromo)
+    public function edit(Card $card)
     {
-        return view('creacion_contenido.edit_cromo', compact('cromo'));
+        return view('creacion_contenido.edit_cromo', compact('card'));
     }
 
     /**
@@ -76,11 +76,11 @@ class CromoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cromo $cromo)
+    public function update(Request $request, Card $card)
     {
-        $cromo->update($request->all());
+        $card->update($request->all());
 
-        return redirect()->route('cromo.create');
+        return redirect()->route('card.create');
     }
 
     /**
@@ -89,10 +89,10 @@ class CromoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cromo $cromo)
+    public function destroy(Card $card)
     {
-        $cromo->delete();
+        $card->delete();
 
-        return redirect()->route('cromo.showAll');
+        return redirect()->route('card.showAll');
     }
 }

@@ -1,15 +1,15 @@
 @extends('layouts.plantilla')
 
-@section('title', 'Editar equipo')
+@section('title', 'Editar team')
 
 @section('content')
-    <form action="{{route('cromo.update', $cromo)}}" method="post">
+    <form action="{{route('card.update', $card)}}" method="post">
         @csrf
         @method('put')
 
         <label>
             Name:
-            <input type="text" name="name" value="{{old('name', $cromo->name)}}">
+            <input type="text" name="name" value="{{old('name', $card->name)}}">
         </label>
 
         @error('name')
@@ -21,10 +21,10 @@
         <br>
         <label>
             Temporada:
-            <input type="text" name="temporada" value="{{old('temporada', $cromo->temporada)}}">
+            <input type="text" name="season" value="{{old('season', $card->season)}}">
         </label>
 
-        @error('temporada')
+        @error('season')
             <br>
             <small>*{{$message}}</small>
             <br>
@@ -33,7 +33,7 @@
         <br>
         <label>
             Imagen:
-            <input type="file" name="urlImage" value="{{old('urlImage', $cromo->urlImage)}}">
+            <input type="file" name="urlImage" value="{{old('urlImage', $card->urlImage)}}">
         </label>
 
         @error('urlImage')
@@ -44,11 +44,11 @@
 
         <br>
         <label>
-            Equipo:
-            <input type="text" name="id_equipo" value="{{old('id_equipo', $cromo->id_equipo)}}">
+            Team:
+            <input type="text" name="id_team" value="{{old('id_team', $card->id_team)}}">
         </label>
 
-        @error('id_equipo')
+        @error('id_team')
             <br>
             <small>*{{$message}}</small>
             <br>

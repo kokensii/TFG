@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('title', 'Listado equipos')
+@section('title', 'Listado teams')
 
 @section('content')
     <div class="wrapper">

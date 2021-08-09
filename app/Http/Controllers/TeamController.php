@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Equipo;
+use App\Models\Team;
 
 class TeamController extends Controller
 {
@@ -35,7 +35,7 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $team = Equipo::create($request->all());
+        $team = Team::create($request->all());
         
         return redirect()->route('index');
     }
@@ -52,7 +52,7 @@ class TeamController extends Controller
     }
 
     public function showAll(){
-        $teams = Equipo::all();
+        $teams = Team::all();
         return view('creacion_contenido.show_teams', compact('teams'));
     }
 
@@ -62,7 +62,7 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Equipo $team)
+    public function edit(Team $team)
     {
         return view('creacion_contenido.edit_team', compact('team'));
     }
@@ -74,7 +74,7 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipo $team)
+    public function update(Request $request, Team $team)
     {
         $team->update($request->all());
 
@@ -87,7 +87,7 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Equipo $team)
+    public function destroy(Team $team)
     {
         $team->delete();
 

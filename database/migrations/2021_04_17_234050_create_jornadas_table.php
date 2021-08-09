@@ -13,24 +13,24 @@ class CreateJornadasTable extends Migration
      */
     public function up()
     {
-        Schema::create('jornadas', function (Blueprint $table) {
+        Schema::create('rounds', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->bigInteger('id_equipo_local1')->unsigned();
-            $table->foreign('id_equipo_local1')->references('id')->on('equipos')->onDelete('cascade');
+            $table->bigInteger('id_home_team')->unsigned();
+            $table->foreign('id_home_team')->references('id')->on('teams')->onDelete('cascade');
 
-            $table->bigInteger('id_equipo_visitante1')->unsigned();
-            $table->foreign('id_equipo_visitante1')->references('id')->on('equipos')->onDelete('cascade');
+            $table->bigInteger('id_away_team')->unsigned();
+            $table->foreign('id_away_team')->references('id')->on('teams')->onDelete('cascade');
 
-            $table->integer('resultado1')->nullable();
+            $table->integer('result')->nullable();
 
-            $table->bigInteger('id_equipo_local2')->unsigned();
-            $table->foreign('id_equipo_local2')->references('id')->on('equipos')->onDelete('cascade');
+            /*$table->bigInteger('id_equipo_local2')->unsigned();
+            $table->foreign('id_equipo_local2')->references('id')->on('teams')->onDelete('cascade');
 
             $table->bigInteger('id_equipo_visitante2')->unsigned();
-            $table->foreign('id_equipo_visitante2')->references('id')->on('equipos')->onDelete('cascade');
+            $table->foreign('id_equipo_visitante2')->references('id')->on('teams')->onDelete('cascade');
 
-            $table->integer('resultado2')->nullable();
+            $table->integer('resultado2')->nullable();*/
             
             $table->timestamps();
         });
@@ -43,6 +43,6 @@ class CreateJornadasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jornadas');
+        Schema::dropIfExists('rounds');
     }
 }
