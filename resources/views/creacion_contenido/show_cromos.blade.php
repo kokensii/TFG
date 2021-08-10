@@ -5,7 +5,7 @@
 @section('content')
     <div class="wrapper">
         <div class="form-listado">
-            @foreach($cromos as $card)
+            @foreach($cards as $card)
                 <div class="form-all">
                     <li>{{$card->name}}</li>
                     <form action="{{ route('card.destroy', $card) }}" method="POST">

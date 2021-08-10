@@ -37,10 +37,10 @@
 							<a href="#">Listados</a>
 							<input type="checkbox" id="btn-1">
 							<ul>
-								<li><a href="#">Equipos</a></li>
-								<li><a href="#">Cromos</a></li>
-								<li><a href="#">Cuestiones</a></li>
-								<li><a href="#">Jornadas</a></li>
+								<li><a href="{{ route('team.showAll') }}">Equipos</a></li>
+								<li><a href="{{ route('card.showAll') }}">Cromos</a></li>
+								<li><a href="{{ route('question.showAll') }}">Cuestiones</a></li>
+								<li><a href="{{ route('round.showAll') }}">Jornadas</a></li>
 							</ul>
 						</li>
 						<li><a href="{{route('team.create')}}">Añadir Equipo</a></li>
