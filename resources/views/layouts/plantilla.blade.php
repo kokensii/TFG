@@ -43,16 +43,23 @@
 								<li><a href="{{ route('round.showAll') }}">Jornadas</a></li>
 							</ul>
 						</li>
-						<li><a href="{{route('team.create')}}">Añadir Equipo</a></li>
-						<li><a href="{{route('card.create')}}">Añadir Cromo</a></li>
-						<li><a href="{{route('question.create')}}">Añadir Pregunta</a></li>
-						<li><a href="{{route('round.create')}}">Añadir Jornada</a></li>
 						<li>
-							<label for="btn-2" class="show">{{ Auth::user()->name }} →</label>
+							<label for="btn-2" class="show">Añadir →</label>
+							<a href="#">Añadir</a>
+							<input type="checkbox" id="btn-2">
+							<ul>
+								<li><a href="{{route('team.create')}}">Añadir Equipo</a></li>
+								<li><a href="{{route('card.create')}}">Añadir Cromo</a></li>
+								<li><a href="{{route('question.create')}}">Añadir Pregunta</a></li>
+								<li><a href="{{route('round.create')}}">Añadir Jornada</a></li>
+							</ul>
+						</li>
+						<li>
+							<label for="btn-3" class="show">{{ Auth::user()->name }} →</label>
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								{{ Auth::user()->name }} <span class="caret"></span>
 							</a>
-							<input type="checkbox" id="btn-2">
+							<input type="checkbox" id="btn-3">
 							  <ul class="dropdown-menu mr-auto" aria-labelledby="navbarDropdownMenuLink">
 								<li>
 									<a href="{{ route('logout') }}"

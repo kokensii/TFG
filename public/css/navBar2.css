@@ -99,7 +99,7 @@ body{
     display: none;
 }
 
-@media all and (max-width: 968px){
+@media all and (max-width: 600px){
     .navbar ul{
         margin-right: 0px;
         float: left;
