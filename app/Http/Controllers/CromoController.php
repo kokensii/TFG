@@ -37,7 +37,7 @@ class CromoController extends Controller
      */
     public function store(Request $request)
     {
-        $team = Card::create($request->all());
+        $card = Card::create($request->all());
         
         return redirect()->route('index');
     }
@@ -54,8 +54,8 @@ class CromoController extends Controller
     }
 
     public function showAll(){
-        $cromos = Card::all();
-        return view('creacion_contenido.show_cromos', compact('cromos'));
+        $cards = Card::all();
+        return view('creacion_contenido.show_cromos', compact('cards'));
     }
 
     /**

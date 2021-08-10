@@ -96,7 +96,6 @@ class JornadaController extends Controller
         return redirect()->route('round.showAll');
     }
 
-
     public function porra()
     {
         //return redirect()->route('round.showAll');
