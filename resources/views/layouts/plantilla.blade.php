@@ -33,25 +33,25 @@
 						@endif  
 					@else
 						<li>
-							<label for="btn-1" class="show">Listados →</label>
-							<a href="#">Listados</a>
+							<label for="btn-1" class="show">Lists →</label>
+							<a href="#">Lists</a>
 							<input type="checkbox" id="btn-1">
 							<ul>
-								<li><a href="{{ route('team.showAll') }}">Equipos</a></li>
-								<li><a href="{{ route('card.showAll') }}">Cromos</a></li>
-								<li><a href="{{ route('question.showAll') }}">Cuestiones</a></li>
-								<li><a href="{{ route('round.showAll') }}">Jornadas</a></li>
+								<li><a href="{{ route('team.showAll') }}">Teams</a></li>
+								<li><a href="{{ route('card.showAll') }}">Cards</a></li>
+								<li><a href="{{ route('question.showAll') }}">Questions</a></li>
+								<li><a href="{{ route('round.showAll') }}">Rounds</a></li>
 							</ul>
 						</li>
 						<li>
-							<label for="btn-2" class="show">Añadir →</label>
-							<a href="#">Añadir</a>
+							<label for="btn-2" class="show">Add →</label>
+							<a href="#">Add</a>
 							<input type="checkbox" id="btn-2">
 							<ul>
-								<li><a href="{{route('team.create')}}">Añadir Equipo</a></li>
-								<li><a href="{{route('card.create')}}">Añadir Cromo</a></li>
-								<li><a href="{{route('question.create')}}">Añadir Pregunta</a></li>
-								<li><a href="{{route('round.create')}}">Añadir Jornada</a></li>
+								<li><a href="{{route('team.create')}}">Team</a></li>
+								<li><a href="{{route('card.create')}}">Card</a></li>
+								<li><a href="{{route('question.create')}}">Question</a></li>
+								<li><a href="{{route('round.create')}}">Round</a></li>
 							</ul>
 						</li>
 						<li>
