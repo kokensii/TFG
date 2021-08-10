@@ -106,7 +106,7 @@ Route::get('question/answer', 'App\Http\Controllers\QuestionController@answer')-
 
 //// Jornadas \\\\
 
-Route::get('round/porra', 'App\Http\Controllers\JornadaController@porra')->name('round.porra');
+//Route::get('round/porra', 'App\Http\Controllers\JornadaController@porra')->name('round.porra');
 
-
+Route::get('round/porra', 'App\Http\Controllers\PorraController@porra')->name('round.porra');
 /* Añadir los controladores de los nuevos modelos y las rutas */

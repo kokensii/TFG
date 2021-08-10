@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Round;
 use App\Models\Team;
 
-class JornadaController extends Controller
+class PorraController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,7 +38,7 @@ class JornadaController extends Controller
      */
     public function store(Request $request)
     {
-        $round = Round::create($request->all());
+        $round = BetRound::create($request->all());
         
         return redirect()->route('index');
     }
@@ -55,7 +55,7 @@ class JornadaController extends Controller
     }
 
     public function showAll(){
-        $rounds = Round::all();
+        $rounds = BetRound::all();
         return view('creacion_contenido.show_jornadas', compact('rounds'));
     }
 
@@ -65,7 +65,7 @@ class JornadaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Round $round)
+    public function edit(BetRound $round)
     {
         return view('creacion_contenido.edit_jornada', compact('round'));
     }
@@ -101,7 +101,10 @@ class JornadaController extends Controller
     {
         //return redirect()->route('round.showAll');
         $rounds = BetRound::all();
-        return view('interaccion_usuarios.play_porra', compact('rounds'));
+        $teams = Team::all();
+        return view('interaccion_usuarios.play_porra', compact('rounds','teams'));
 
     }
+
+
 }
