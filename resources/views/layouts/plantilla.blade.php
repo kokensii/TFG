@@ -24,7 +24,6 @@
 				<span class="fa fa-bars"></span>
 			</label>
 			<input type="checkbox" id="btn" style="display: none;">
-			
 				<ul>
 					@guest
 						<li><a href="{{route('login')}}">{{__('Login')}}</a></li>
@@ -32,53 +31,86 @@
 							<li><a href="{{route('register')}}">{{__('Register')}}</a></li>
 						@endif  
 					@else
-						<li>
-							<label for="btn-1" class="show">Lists →</label>
-							<a href="#">Lists</a>
-							<input type="checkbox" id="btn-1">
-							<ul>
-								<li><a href="{{ route('team.showAll') }}">Teams</a></li>
-								<li><a href="{{ route('card.showAll') }}">Cards</a></li>
-								<li><a href="{{ route('question.showAll') }}">Questions</a></li>
-								<li><a href="{{ route('round.showAll') }}">Rounds</a></li>
-							</ul>
-						</li>
-						<li>
-							<label for="btn-2" class="show">Add →</label>
-							<a href="#">Add</a>
-							<input type="checkbox" id="btn-2">
-							<ul>
-								<li><a href="{{route('team.create')}}">Team</a></li>
-								<li><a href="{{route('card.create')}}">Card</a></li>
-								<li><a href="{{route('question.create')}}">Question</a></li>
-								<li><a href="{{route('round.create')}}">Round</a></li>
-							</ul>
-						</li>
-						<li>
-							<label for="btn-3" class="show">{{ Auth::user()->name }} →</label>
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								{{ Auth::user()->name }} <span class="caret"></span>
-							</a>
-							<input type="checkbox" id="btn-3">
-							  <ul class="dropdown-menu mr-auto" aria-labelledby="navbarDropdownMenuLink">
-								<li>
-									<a href="{{ route('logout') }}"
-								   onclick="event.preventDefault();
-												 document.getElementById('logout-form').submit();">
-									{{ __('Logout') }}
-									</a>
-								
-									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-										@csrf
-									</form>
-								</li>
-								<li>
-									<a href="{{ route('profile', Auth::user()) }}">
-										{{ __('My profile') }}
-									</a>
-								</li>
-							  </ul>
-						</li>
+						@if(Auth::user()->type == "admin")
+							<li>
+								<label for="btn-1" class="show">Lists →</label>
+								<a href="#">Lists</a>
+								<input type="checkbox" id="btn-1">
+								<ul>
+									<li><a href="{{ route('team.showAll') }}">Teams</a></li>
+									<li><a href="{{ route('card.showAll') }}">Cards</a></li>
+									<li><a href="{{ route('question.showAll') }}">Questions</a></li>
+									<li><a href="{{ route('round.showAll') }}">Rounds</a></li>
+								</ul>
+							</li>
+							<li>
+								<label for="btn-2" class="show">Add →</label>
+								<a href="#">Add</a>
+								<input type="checkbox" id="btn-2">
+								<ul>
+									<li><a href="{{route('team.create')}}">Team</a></li>
+									<li><a href="{{route('card.create')}}">Card</a></li>
+									<li><a href="{{route('question.create')}}">Question</a></li>
+									<li><a href="{{route('round.create')}}">Round</a></li>
+								</ul>
+							</li>
+							<li>
+								<label for="btn-3" class="show">{{ Auth::user()->name }} →</label>
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									{{ Auth::user()->name }} <span class="caret"></span>
+								</a>
+								<input type="checkbox" id="btn-3">
+								<ul class="dropdown-menu mr-auto" aria-labelledby="navbarDropdownMenuLink">
+									<li>
+										<a href="{{ route('logout') }}"
+											onclick="event.preventDefault();
+											document.getElementById('logout-form').submit();">
+											{{ __('Logout') }}
+										</a>
+										
+										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+											@csrf
+										</form>
+									</li>
+									<li>
+										<a href="{{ route('profile', Auth::user()) }}">
+											{{ __('My profile') }}
+										</a>
+									</li>
+								</ul>
+							</li>
+						@else
+							
+							<li>
+								<!--<img src="{{ asset('coin2.jpg') }}" style="width: 20px; height: 20px; padding-top: 6px;">-->
+								<a href="#">{{ Auth::user()->coin }}</a>
+							</li>
+							<li>
+								<label for="btn-3" class="show">{{ Auth::user()->name }} →</label>
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									{{ Auth::user()->name }} <span class="caret"></span>
+								</a>
+								<input type="checkbox" id="btn-3">
+								<ul class="dropdown-menu mr-auto" aria-labelledby="navbarDropdownMenuLink">
+									<li>
+										<a href="{{ route('logout') }}"
+											onclick="event.preventDefault();
+											document.getElementById('logout-form').submit();">
+											{{ __('Logout') }}
+										</a>
+										
+										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+											@csrf
+										</form>
+									</li>
+									<li>
+										<a href="{{ route('profile', Auth::user()) }}">
+											{{ __('My profile') }}
+										</a>
+									</li>
+								</ul>
+							</li>
+						@endif
 					@endguest
 				</ul>
 			
