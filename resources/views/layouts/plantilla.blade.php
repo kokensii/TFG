@@ -80,7 +80,12 @@
 								</ul>
 							</li>
 						@else
-							
+							<li>
+								<a href="#">Questions</a>
+							</li>
+							<li>
+								<a href="#">Porra</a>
+							</li>
 							<li>
 								<!--<img src="{{ asset('coin2.jpg') }}" style="width: 20px; height: 20px; padding-top: 6px;">-->
 								<a href="#">{{ Auth::user()->coin }}</a>
