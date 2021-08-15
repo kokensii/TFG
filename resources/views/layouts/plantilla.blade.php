@@ -56,7 +56,7 @@
 							</li>
 							<li>
 								<label for="btn-3" class="show">{{ Auth::user()->name }} →</label>
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<a href="#">
 									{{ Auth::user()->name }} <span class="caret"></span>
 								</a>
 								<input type="checkbox" id="btn-3">
@@ -84,7 +84,7 @@
 								<a href="{{ route('question.answer') }}">Questions</a>
 							</li>
 							<li>
-								<a href="#">Porra</a>
+								<a href="{{ route('round.porra') }}">Porra</a>
 							</li>
 							<li>
 								<!--<img src="{{ asset('coin2.jpg') }}" style="width: 20px; height: 20px; padding-top: 6px;">-->
@@ -92,7 +92,7 @@
 							</li>
 							<li>
 								<label for="btn-3" class="show">{{ Auth::user()->name }} →</label>
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<a href="#">
 									{{ Auth::user()->name }} <span class="caret"></span>
 								</a>
 								<input type="checkbox" id="btn-3">
