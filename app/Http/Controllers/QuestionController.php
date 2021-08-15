@@ -53,7 +53,7 @@ class QuestionController extends Controller
 
     public function showAll(){
         $questions = Question::all();
-        return view('creacion_contenido.show_questions()', compact('questions'));
+        return view('creacion_contenido.show_questions', compact('questions'));
     }
 
     /**

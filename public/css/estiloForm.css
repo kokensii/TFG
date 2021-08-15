@@ -95,6 +95,7 @@ form .button input:hover{
     width: 100%;
     background: #fff;
     padding: 25px 30px;
+    border: black 2px solid;
     border-radius: 5px;
 }
 
