@@ -48,7 +48,8 @@
                     <small>*{{$message}}</small>
                     <br>
                 @enderror
-
+            </div>
+            
             <div class="button">
                 <input type="submit" value="Enviar">
             </div>
