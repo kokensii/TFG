@@ -81,7 +81,7 @@
 							</li>
 						@else
 							<li>
-								<a href="#">Questions</a>
+								<a href="{{ route('question.answer') }}">Questions</a>
 							</li>
 							<li>
 								<a href="#">Porra</a>
