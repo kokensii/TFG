@@ -102,11 +102,14 @@ Route::get('round/showAll', 'App\Http\Controllers\JornadaController@showAll')->n
 
 //// Cuestiones \\\\
 
-Route::get('question/answer', 'App\Http\Controllers\QuestionController@answer')->name('question.answer');
+Route::get('questionUser/answer', 'App\Http\Controllers\QuestionController@answer')->name('questionUser.answer');
 
 //// Jornadas \\\\
 
 //Route::get('round/porra', 'App\Http\Controllers\JornadaController@porra')->name('round.porra');
 
 Route::get('round/porra', 'App\Http\Controllers\PorraController@porra')->name('round.porra');
+
 /* Añadir los controladores de los nuevos modelos y las rutas */
+
+//Prueba

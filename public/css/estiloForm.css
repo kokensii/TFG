@@ -113,6 +113,16 @@ form .button input:hover{
     list-style: none;
 }
 
+.form-check{
+    padding-bottom: 10px;
+}
+
+.titleQuestion{
+    font-size: 25px;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
 @media (max-width: 584px){
     .wrapper{
         max-width: 100%;

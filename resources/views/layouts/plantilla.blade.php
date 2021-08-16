@@ -81,7 +81,7 @@
 							</li>
 						@else
 							<li>
-								<a href="{{ route('question.answer') }}">Questions</a>
+								<a href="{{ route('questionUser.answer') }}">Questions</a>
 							</li>
 							<li>
 								<a href="{{ route('round.porra') }}">Porra</a>

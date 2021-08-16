@@ -98,6 +98,8 @@ class QuestionController extends Controller
 
     public function answer()
     {
-        return view('interaccion_usuarios.answer_question');
+        $questions = Question::all();
+
+        return view('interaccion_usuarios.answer_question', compact('questions'));
     }
 }
