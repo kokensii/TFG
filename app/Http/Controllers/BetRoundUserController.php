@@ -6,8 +6,9 @@ use App\Models\BetRound;
 use Illuminate\Http\Request;
 use App\Models\Round;
 use App\Models\Team;
+use App\Models\BetRoundUser;
 
-class PorraController extends Controller
+class BetRoundUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,8 +27,7 @@ class PorraController extends Controller
      */
     public function create()
     {
-        $teams = Team::get();
-        return view('creacion_contenido.create_jornada', compact('teams'));
+        //
     }
 
     /**
@@ -38,7 +38,7 @@ class PorraController extends Controller
      */
     public function store(Request $request)
     {
-        $round = BetRound::create($request->all());
+        $round = BetRoundUser::create($request->all());
         
         return redirect()->route('index');
     }
@@ -55,8 +55,7 @@ class PorraController extends Controller
     }
 
     public function showAll(){
-        $rounds = BetRound::all();
-        return view('creacion_contenido.show_jornadas', compact('rounds'));
+        //
     }
 
     /**
@@ -67,7 +66,7 @@ class PorraController extends Controller
      */
     public function edit(BetRound $round)
     {
-        return view('creacion_contenido.edit_jornada', compact('round'));
+       // return view('creacion_contenido.edit_jornada', compact('round'));
     }
 
     /**
@@ -79,9 +78,9 @@ class PorraController extends Controller
      */
     public function update(Request $request, Round $round)
     {
-        $round->update($request->all());
+       // $round->update($request->all());
 
-        return redirect()->route('round.porra');
+       // return redirect()->route('round.porra');
     }
 
     /**
@@ -97,12 +96,13 @@ class PorraController extends Controller
         return redirect()->route('round.showAll');
     }
 
-    public function porra()
+    public function play()
     {
-        //return redirect()->route('round.showAll');
         $rounds = BetRound::all();
         $teams = Team::all();
-        return view('interaccion_usuarios.play_porra', compact('rounds','teams'));
+        $porraUser = BetRoundUser::all();
+        $numPartidos = BetRoundUser::count();
+        return view('interaccion_usuarios.play_porra', compact('rounds','teams','porraUser','numPartidos'));
 
     }
 
