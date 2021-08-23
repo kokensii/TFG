@@ -103,7 +103,6 @@ class PorraController extends Controller
         $rounds = BetRound::all();
         $teams = Team::all();
         return view('interaccion_usuarios.play_porra', compact('rounds','teams'));
-
     }
 
 
