@@ -99,7 +99,8 @@ class QuestionController extends Controller
     public function answer()
     {
         $questions = Question::all();
-
-        return view('interaccion_usuarios.answer_question', compact('questions'));
+        $question = $questions->last()->id;
+        $rand = rand(1, $question);
+        return view('interaccion_usuarios.answer_question', compact('questions', 'rand'));
     }
 }
