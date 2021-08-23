@@ -104,6 +104,8 @@ Route::get('round/showAll', 'App\Http\Controllers\JornadaController@showAll')->n
 
 Route::get('questionUser/answer', 'App\Http\Controllers\QuestionController@answer')->name('questionUser.answer');
 
+Route::post('questionUser/{question}', 'App\Http\Controllers\QuestionController@isCorrect')->name('questionUser.isCorrect');
+
 //// Jornadas \\\\
 
 //Route::get('round/porra', 'App\Http\Controllers\JornadaController@porra')->name('round.porra');

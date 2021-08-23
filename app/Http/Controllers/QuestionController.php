@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Question;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
@@ -100,7 +102,21 @@ class QuestionController extends Controller
     {
         $questions = Question::all();
         $question = $questions->last()->id;
-        $rand = rand(1, $question);
+        $rand = rand(0, $question-1);
+
         return view('interaccion_usuarios.answer_question', compact('questions', 'rand'));
+    }
+
+    public function isCorrect(Request $request, Question $question)
+    {
+        $user = User::find(Auth::user()->id);
+
+        if($request['respuesta'] == $question->correct_answer){
+            $user->coin = $user->coin + 100;
+        }
+
+        $user->save();
+
+        return redirect()->route('questionUser.answer');
     }
 }
