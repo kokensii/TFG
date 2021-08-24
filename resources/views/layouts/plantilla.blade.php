@@ -87,8 +87,7 @@
 								<a href="{{ route('round.porra') }}">Porra</a>
 							</li>
 							<li>
-								<!--<img src="{{ asset('coin2.jpg') }}" style="width: 20px; height: 20px; padding-top: 6px;">-->
-								<a href="#">{{ Auth::user()->coin }}</a>
+								<a href="#">{{ Auth::user()->coin }} coins</a>
 							</li>
 							<li>
 								<label for="btn-3" class="show">{{ Auth::user()->name }} →</label>
