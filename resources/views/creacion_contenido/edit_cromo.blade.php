@@ -3,58 +3,60 @@
 @section('title', 'Editar team')
 
 @section('content')
-    <form action="{{route('card.update', $card)}}" method="post">
-        @csrf
-        @method('put')
+    <div class="form">
+        <div class="title">Editar cromo</div>
+        <form action="{{route('card.update', $card)}}" method="POST">
+            @csrf
+            @method('put')
 
-        <label>
-            Name:
-            <input type="text" name="name" value="{{old('name', $card->name)}}">
-        </label>
+            <div class="form-details">
+                <div class="input-box">
+                    <span class="details">Nombre</span>
+                    <input type="text" id="name" name="name" value="{{old('name', $card->name)}}">
+                </div>
 
-        @error('name')
-            <br>
-            <small>*{{$message}}</small>
-            <br>
-        @enderror
+                @error('name')
+                    <br>
+                    <small>*{{$message}}</small>
+                    <br>
+                @enderror
 
-        <br>
-        <label>
-            Temporada:
-            <input type="text" name="season" value="{{old('season', $card->season)}}">
-        </label>
+                <div class="input-box">
+                    <span class="details">Temporada</span>
+                    <input type="text" id="season" name="season" value="{{old('season', $card->season)}}">
+                </div>
 
-        @error('season')
-            <br>
-            <small>*{{$message}}</small>
-            <br>
-        @enderror
+                @error('season')
+                    <br>
+                    <small>*{{$message}}</small>
+                    <br>
+                @enderror
 
-        <br>
-        <label>
-            Imagen:
-            <input type="file" name="urlImage" value="{{old('urlImage', $card->urlImage)}}">
-        </label>
+                <div class="input-box">
+                    <span class="details">Imagen</span>
+                    <input type="text" id="urlImage" name="urlImage" value="{{old('urlImage', $card->urlImage)}}">
+                </div>
 
-        @error('urlImage')
-            <br>
-            <small>*{{$message}}</small>
-            <br>
-        @enderror
+                @error('urlImage')
+                    <br>
+                    <small>*{{$message}}</small>
+                    <br>
+                @enderror
 
-        <br>
-        <label>
-            Team:
-            <input type="text" name="id_team" value="{{old('id_team', $card->id_team)}}">
-        </label>
+                <div class="input-box">
+                    <span class="details">Equipo</span>
+                    <input type="text" id="id_team" name="id_team" value="{{old('id_team', $card->id_team)}}">
+                </div>
 
-        @error('id_team')
-            <br>
-            <small>*{{$message}}</small>
-            <br>
-        @enderror
-
-        <br>
-        <button type="submit">Editar</button>
-    </form>
+                @error('id_team')
+                    <br>
+                    <small>*{{$message}}</small>
+                    <br>
+                @enderror
+            </div>
+            <div class="button">
+                <input type="submit" value="Editar">
+            </div>
+        </form>
+    </div>
 @endsection

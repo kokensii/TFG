@@ -8,6 +8,7 @@
             @foreach($cards as $card)
                 <div class="form-all">
                     <li>{{$card->name}}</li>
+                    <li><img src="{{ asset($card->urlImage)}}"></li>
                     <form action="{{ route('card.destroy', $card) }}" method="POST">
                         @csrf
                         @method('delete')
