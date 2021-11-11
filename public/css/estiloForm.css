@@ -46,6 +46,7 @@ form .form-details .input-box{
 }
 
 .form-details .input-box input[type="text"],
+.form-details .input-box input[type="password"],
 .form-details .input-box select{
     height: 45px;
     width: 100%;
