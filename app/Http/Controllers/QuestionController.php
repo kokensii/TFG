@@ -97,14 +97,25 @@ class QuestionController extends Controller
     }
 
     //Hecho desde hoy.
+    public function answerDef(Question $question)
+    {
+        $questionAll = Question::all();
+        $idLast = $questionAll->last()->id;
+
+        $next = Question::where('id', '>', $question->id)
+                ->orderBy('id', 'asc')
+                ->first();
+
+        $questions = $next;
+
+        return view('interaccion_usuarios.answer_question', compact('questions'));
+    }
 
     public function answer()
     {
-        $questions = Question::all();
-        $question = $questions->last()->id;
-        $rand = rand(0, $question-1);
+        $question = Question::first();
 
-        return view('interaccion_usuarios.answer_question', compact('questions', 'rand'));
+        return $this->answerDef($question);
     }
 
     public function isCorrect(Request $request, Question $question)
@@ -112,11 +123,13 @@ class QuestionController extends Controller
         $user = User::find(Auth::user()->id);
 
         if($request['respuesta'] == $question->correct_answer){
-            $user->coin = $user->coin + 100;
+            $user->coin += 50;
+        }else{
+            $user->coin -= 25;
         }
 
         $user->save();
 
-        return redirect()->route('questionUser.answer');
+        return redirect()->route('questionUser.answer', $question);
     }
 }
