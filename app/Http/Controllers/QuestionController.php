@@ -99,14 +99,7 @@ class QuestionController extends Controller
     //Hecho desde hoy.
     public function answerDef(Question $question)
     {
-        $questionAll = Question::all();
-        $idLast = $questionAll->last()->id;
-
-        $next = Question::where('id', '>', $question->id)
-                ->orderBy('id', 'asc')
-                ->first();
-
-        $questions = $next;
+        $questions = $question;
 
         return view('interaccion_usuarios.answer_question', compact('questions'));
     }
@@ -114,6 +107,9 @@ class QuestionController extends Controller
     public function answer()
     {
         $question = Question::first();
+
+        /* Hacer un recorrido hasta encontrar el primero que no
+           este con finalizado = true*/
 
         return $this->answerDef($question);
     }
@@ -124,12 +120,19 @@ class QuestionController extends Controller
 
         if($request['respuesta'] == $question->correct_answer){
             $user->coin += 50;
-        }else{
-            $user->coin -= 25;
         }
 
         $user->save();
 
-        return redirect()->route('questionUser.answer', $question);
+        $next = Question::where('id', '>', $question->id)
+                    ->orderBy('id', 'asc')
+                    ->first();
+
+        $questions = $next;
+
+        if($next != null) return view('interaccion_usuarios.answer_question', compact('questions'));
+
+        /*return redirect()->route('questionUser.answer', $question);*/
+        
     }
 }
