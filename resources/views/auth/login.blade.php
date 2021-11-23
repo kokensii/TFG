@@ -15,7 +15,7 @@
 
                 @error('email')
                     <br>
-                    <small>*{{ $mesagge }}</small>
+                    <small>*{{$mesagge}}</small>
                     <br>
                 @enderror
 
@@ -26,7 +26,7 @@
 
                 @error('password')
                     <br>
-                    <small>*{{ $message }}</small>
+                    <small>*{{$message}}</small>
                     <br>
                 @enderror
 
