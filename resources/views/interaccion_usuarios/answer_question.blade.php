@@ -14,7 +14,7 @@
                           <div class="form-check">
                             <input class="form-check-input" name="respuesta" type="radio" id="ans1" value="{{ $questions->correct_answer }}">
                             <label class="col-sm-2 form-check-label" for="ans1">
-                              a) {{ $questions->correct_answer }}
+                              {{ $questions->correct_answer }}
                             </label>
                           </div>
                         </div>
@@ -25,7 +25,7 @@
                           <div class="form-check">
                             <input class="form-check-input" name="respuesta" type="radio" id="ans2" value="{{ $questions->bad_answer1 }}">
                             <label class="col-sm-2 form-check-label" for="ans2">
-                              b) {{ $questions->bad_answer1 }}
+                              {{ $questions->bad_answer1 }}
                             </label>
                           </div>
                         </div>
@@ -36,7 +36,7 @@
                           <div class="form-check">
                             <input class="form-check-input" name="respuesta" type="radio" id="ans3" value="{{ $questions->bad_answer2 }}">
                             <label class="col-sm-2 form-check-label" for="ans3">
-                              c) {{ $questions->bad_answer2 }}
+                              {{ $questions->bad_answer2 }}
                             </label>
                           </div>
                         </div>
@@ -47,7 +47,7 @@
                           <div class="form-check">
                             <input class="form-check-input" name="respuesta" type="radio" id="ans4" value="{{ $questions->bad_answer3 }}">
                             <label class="col-sm-2 form-check-label" for="ans4">
-                              d) {{ $questions->bad_answer3 }}
+                              {{ $questions->bad_answer3 }}
                             </label>
                           </div>
                         </div>
