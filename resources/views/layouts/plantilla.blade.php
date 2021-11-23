@@ -65,7 +65,7 @@
 										<a href="{{ route('logout') }}"
 											onclick="event.preventDefault();
 											document.getElementById('logout-form').submit();">
-											{{ __('Logout') }}
+											{{ __('Cerrar sesión') }}
 										</a>
 										
 										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -74,20 +74,20 @@
 									</li>
 									<li>
 										<a href="{{ route('profile', Auth::user()) }}">
-											{{ __('My profile') }}
+											{{ __('Mi perfil') }}
 										</a>
 									</li>
 								</ul>
 							</li>
 						@else
 							<li>
-								<a href="{{ route('questionUser.answer') }}">Questions</a>
+								<a href="{{ route('questionUser.answer') }}">Preguntas</a>
 							</li>
 							<li>
 								<a href="{{ route('round.porra') }}">Porra</a>
 							</li>
 							<li>
-								<a href="#">{{ Auth::user()->coin }} coins</a>
+								<a href="#">{{ Auth::user()->coin }} monedas</a>
 							</li>
 							<li>
 								<label for="btn-3" class="show">{{ Auth::user()->name }} →</label>
