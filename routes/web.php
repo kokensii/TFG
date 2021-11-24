@@ -13,6 +13,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route as Route;
+use RealRashid\SweetAlert\Facades\Alert;
 
 Route::get('/', function () {
     return view('welcome');

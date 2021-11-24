@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class QuestionController extends Controller
 {
@@ -104,10 +105,19 @@ class QuestionController extends Controller
         $questionAll = Question::all();
 
         /*
-        if($question->finalizado){
-
+        if($questions->finalizado){
+            $next = Question::where('id', '>', $question->id)
+                    ->orderBy('id', 'asc')
+                    ->first();
+            for($i = 0; $i < $questionAll.lenght() && $next.finalizado; $i++){
+                $next = Question::where('id', '>', $question->id)
+                    ->orderBy('id', 'asc')
+                    ->first();
+            }
+            $questions = $next;
         }
         */
+
         /* Hacer un recorrido hasta encontrar el primero que no
            este con finalizado = true*/
         return view('interaccion_usuarios.answer_question', compact('questions'));
@@ -119,7 +129,9 @@ class QuestionController extends Controller
 
         if($request['respuesta'] == $question->correct_answer){
             $user->coin += 50;
+            $acierto = true;
         }
+        else $acierto = false;
 
         $user->save();
 
@@ -128,6 +140,10 @@ class QuestionController extends Controller
                     ->first();
 
         $questions = $next;
+
+        if($acierto){
+            Alert::success('Enhorabuena!', 'Tu respuesta ha sido correcta')->autoclose(3500);
+        }else Alert::error('Lo siento...', 'La respuesta ha sido incorrecta')->autoclose(3500);
 
         if($next != null) return view('interaccion_usuarios.answer_question', compact('questions'));
 

@@ -8,8 +8,14 @@
 		<link rel="stylesheet" href="{{ asset('css/estiloForm.css') }}">
 		<link rel="stylesheet" href="{{ asset('css/navBar2.css') }}">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		
+		<link rel=”stylesheet” href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+		@include('sweet::alert')
 		<script src="{{ asset('js/navbarScript.js') }}" defer></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		
 		<!-- favicon -->
 		<!-- estilos -->
@@ -17,7 +23,7 @@
 	<body>
 		<!-- header -->
 		<!-- nav -->
-		
+		@include('sweetalert::alert')
 		<nav class="navbar">
 			<div class="brand-title">Cromitos</div>
 			<label for="btn" class="icon">
