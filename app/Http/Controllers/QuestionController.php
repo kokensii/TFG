@@ -97,21 +97,20 @@ class QuestionController extends Controller
     }
 
     //Hecho desde hoy.
-    public function answerDef(Question $question)
-    {
-        $questions = $question;
-
-        return view('interaccion_usuarios.answer_question', compact('questions'));
-    }
 
     public function answer()
     {
-        $question = Question::first();
+        $questions = Question::first();
+        $questionAll = Question::all();
 
+        /*
+        if($question->finalizado){
+
+        }
+        */
         /* Hacer un recorrido hasta encontrar el primero que no
            este con finalizado = true*/
-
-        return $this->answerDef($question);
+        return view('interaccion_usuarios.answer_question', compact('questions'));
     }
 
     public function isCorrect(Request $request, Question $question)
