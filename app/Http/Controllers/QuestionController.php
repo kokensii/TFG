@@ -41,7 +41,7 @@ class QuestionController extends Controller
     {
         $question = Question::create($request->all());
         
-        return redirect()->route('index');
+        return view('creacion_contenido.create_question');
     }
 
     public function storeUserAnswer(Request $request, Question $question)
