@@ -136,14 +136,21 @@ class QuestionController extends Controller
     public function answer()
     {
         $questions = Question::first();
+        $questionAll = Question::all();
         $users = UserAnswer::all();
         $userAnswer = $users->last();
 
+        $numQuestions = count($questionAll);
+
         if(!empty($userAnswer->id)){
-            while($questions->id <= $userAnswer->id_question){
+            $i = 0;
+            while($i < $numQuestions && $questions->id <= $userAnswer->id_question){
                 $questions = $this->nextQuestion($questions);
+                $i = $i + 1;
             }
         }
+
+        if($i == $numQuestions) return view('users.index');
 
         return view('interaccion_usuarios.answer_question', compact('questions'));
     }
@@ -163,6 +170,7 @@ class QuestionController extends Controller
         }else Alert::error('Lo siento...', 'La respuesta ha sido incorrecta')->autoclose(3500);
 
         if($next != null) return view('interaccion_usuarios.answer_question', compact('questions'));
+        else return view('interaccion_usuarios.play_porra');
 
         /*return redirect()->route('questionUser.answer', $question);*/
         
