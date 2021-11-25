@@ -139,18 +139,21 @@ class QuestionController extends Controller
         $questionAll = Question::all();
         $users = UserAnswer::all();
         $userAnswer = $users->last();
+        $i = 0;
 
         $numQuestions = count($questionAll);
 
         if(!empty($userAnswer->id)){
-            $i = 0;
             while($i < $numQuestions && $questions->id <= $userAnswer->id_question){
                 $questions = $this->nextQuestion($questions);
                 $i = $i + 1;
             }
         }
 
-        if($i == $numQuestions) return view('users.index');
+        if($i == $numQuestions){
+            Alert::info('Atento', 'Ya has respondido todas las preguntas de esta semana')->autoclose(3500);
+            return view('users.index');
+        }
 
         return view('interaccion_usuarios.answer_question', compact('questions'));
     }
@@ -170,7 +173,9 @@ class QuestionController extends Controller
         }else Alert::error('Lo siento...', 'La respuesta ha sido incorrecta')->autoclose(3500);
 
         if($next != null) return view('interaccion_usuarios.answer_question', compact('questions'));
-        else return view('interaccion_usuarios.play_porra');
+        else {
+            return view('users.index');
+        }
 
         /*return redirect()->route('questionUser.answer', $question);*/
         
