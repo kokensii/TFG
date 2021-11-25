@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\User;
+use App\Models\UserAnswer;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -126,6 +127,14 @@ class QuestionController extends Controller
     public function isCorrect(Request $request, Question $question)
     {
         $user = User::find(Auth::user()->id);
+        
+        $userAnswer = new UserAnswer;
+        $userAnswer->id_question = $question->id;
+        $userAnswer->answer = $request['respuesta'];
+        $userAnswer->id_user = Auth::user()->id;
+        $userAnswer->save();
+
+        return $userAnswer;
 
         if($request['respuesta'] == $question->correct_answer){
             $user->coin += 50;
