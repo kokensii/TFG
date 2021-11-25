@@ -44,6 +44,17 @@ class QuestionController extends Controller
         return redirect()->route('index');
     }
 
+    public function storeUserAnswer(Request $request, Question $question)
+    {
+        $userAnswer = new UserAnswer;
+        $userAnswer->id_question = $question->id;
+        $userAnswer->answer = $request['respuesta'];
+        $userAnswer->id_user = Auth::user()->id;
+        $userAnswer->save();
+
+        return $userAnswer;
+    }
+
     /**
      * Display the specified resource.
      *
@@ -98,43 +109,9 @@ class QuestionController extends Controller
         return redirect()->route('question.showAll');
     }
 
-    //Hecho desde hoy.
-
-    public function answer()
-    {
-        $questions = Question::first();
-        $questionAll = Question::all();
-
-        /*
-        if($questions->finalizado){
-            $next = Question::where('id', '>', $question->id)
-                    ->orderBy('id', 'asc')
-                    ->first();
-            for($i = 0; $i < $questionAll.lenght() && $next.finalizado; $i++){
-                $next = Question::where('id', '>', $question->id)
-                    ->orderBy('id', 'asc')
-                    ->first();
-            }
-            $questions = $next;
-        }
-        */
-
-        /* Hacer un recorrido hasta encontrar el primero que no
-           este con finalizado = true*/
-        return view('interaccion_usuarios.answer_question', compact('questions'));
-    }
-
-    public function isCorrect(Request $request, Question $question)
+    public function addCoins(Request $request, Question $question)
     {
         $user = User::find(Auth::user()->id);
-        
-        $userAnswer = new UserAnswer;
-        $userAnswer->id_question = $question->id;
-        $userAnswer->answer = $request['respuesta'];
-        $userAnswer->id_user = Auth::user()->id;
-        $userAnswer->save();
-
-        return $userAnswer;
 
         if($request['respuesta'] == $question->correct_answer){
             $user->coin += 50;
@@ -144,9 +121,40 @@ class QuestionController extends Controller
 
         $user->save();
 
+        return $acierto;
+    }
+
+    public function nextQuestion(Question $question)
+    {
         $next = Question::where('id', '>', $question->id)
                     ->orderBy('id', 'asc')
                     ->first();
+
+        return $next;
+    }
+
+    public function answer()
+    {
+        $questions = Question::first();
+        $users = UserAnswer::all();
+        $userAnswer = $users->last();
+
+        if(!empty($userAnswer->id)){
+            while($questions->id <= $userAnswer->id_question){
+                $questions = $this->nextQuestion($questions);
+            }
+        }
+
+        return view('interaccion_usuarios.answer_question', compact('questions'));
+    }
+
+    public function isCorrect(Request $request, Question $question)
+    {
+        $userAnswer = $this->storeUserAnswer($request, $question);
+
+        $acierto = $this->addCoins($request, $question);
+
+        $next = $this->nextQuestion($question);
 
         $questions = $next;
 
