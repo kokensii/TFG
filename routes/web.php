@@ -87,7 +87,7 @@ Route::get('question/showAll', 'App\Http\Controllers\QuestionController@showAll'
 
 //// Jornadas \\\\
 
-Route::get('round/create', 'App\Http\Controllers\JornadaController@create')->name('round.create');
+Route::get('round/create', 'App\Http\Controllers\BetRoundController@create')->name('round.create');
 
 Route::post('round/store', 'App\Http\Controllers\BetRoundController@store')->name('round.store');
 
@@ -95,7 +95,7 @@ Route::get('round/{betRound}/edit', 'App\Http\Controllers\BetRoundController@edi
 
 Route::put('round/{betRound}', 'App\Http\Controllers\BetRoundController@update')->name('round.update');
 
-Route::delete('round/{betRound}', 'App\Http\Controllers\JornadaController@destroy')->name('round.destroy');
+Route::delete('round/{betRound}', 'App\Http\Controllers\BetRoundController@destroy')->name('round.destroy');
 
 Route::get('round/showAll', 'App\Http\Controllers\BetRoundController@showAll')->name('round.showAll');
 
