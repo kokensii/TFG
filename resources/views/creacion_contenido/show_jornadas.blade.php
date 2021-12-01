@@ -7,7 +7,7 @@
         <div class="form-listado">
             @foreach($rounds as $round)
                 <div class="form-all">
-                    <li>{{ $round->id }}</li>
+                    <li>Jornada: {{ $round->id_jornada }} Temporada: {{ $round->season }}</li>
                     <form action="{{ route('round.destroy', $round) }}" method="POST">
                         @csrf
                         @method('delete')
