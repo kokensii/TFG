@@ -39,25 +39,25 @@
 					@else
 						@if(Auth::user()->type == "admin")
 							<li>
-								<label for="btn-1" class="show">Lists →</label>
-								<a href="#">Lists</a>
+								<label for="btn-1" class="show">Listas →</label>
+								<a href="#">Listas</a>
 								<input type="checkbox" id="btn-1">
 								<ul>
-									<li><a href="{{ route('team.showAll') }}">Teams</a></li>
-									<li><a href="{{ route('card.showAll') }}">Cards</a></li>
-									<li><a href="{{ route('question.showAll') }}">Questions</a></li>
-									<li><a href="{{ route('round.showAll') }}">Rounds</a></li>
+									<li><a href="{{ route('team.showAll') }}">Equipos</a></li>
+									<li><a href="{{ route('card.showAll') }}">Cromos</a></li>
+									<li><a href="{{ route('question.showAll') }}">Preguntas</a></li>
+									<li><a href="{{ route('round.showAll') }}">Jornadas</a></li>
 								</ul>
 							</li>
 							<li>
-								<label for="btn-2" class="show">Add →</label>
-								<a href="#">Add</a>
+								<label for="btn-2" class="show">Añadir →</label>
+								<a href="#">Añadir</a>
 								<input type="checkbox" id="btn-2">
 								<ul>
-									<li><a href="{{route('team.create')}}">Team</a></li>
-									<li><a href="{{route('card.create')}}">Card</a></li>
-									<li><a href="{{route('question.create')}}">Question</a></li>
-									<li><a href="{{route('round.create')}}">Round</a></li>
+									<li><a href="{{route('team.create')}}">Equipo</a></li>
+									<li><a href="{{route('card.create')}}">Cromo</a></li>
+									<li><a href="{{route('question.create')}}">Pregunta</a></li>
+									<li><a href="{{route('round.create')}}">Jornada</a></li>
 								</ul>
 							</li>
 							<li>
