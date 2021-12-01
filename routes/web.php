@@ -91,13 +91,13 @@ Route::get('round/create', 'App\Http\Controllers\JornadaController@create')->nam
 
 Route::post('round/store', 'App\Http\Controllers\BetRoundController@store')->name('round.store');
 
-Route::get('round/{round}/edit', 'App\Http\Controllers\JornadaController@edit')->name('round.edit');
+Route::get('round/{betRound}/edit', 'App\Http\Controllers\BetRoundController@edit')->name('round.edit');
 
-Route::put('round/{round}', 'App\Http\Controllers\JornadaController@update')->name('round.update');
+Route::put('round/{betRound}', 'App\Http\Controllers\BetRoundController@update')->name('round.update');
 
-Route::delete('round/{round}', 'App\Http\Controllers\JornadaController@destroy')->name('round.destroy');
+Route::delete('round/{betRound}', 'App\Http\Controllers\JornadaController@destroy')->name('round.destroy');
 
-Route::get('round/showAll', 'App\Http\Controllers\JornadaController@showAll')->name('round.showAll');
+Route::get('round/showAll', 'App\Http\Controllers\BetRoundController@showAll')->name('round.showAll');
 
 // MÓDULO INTERACCION USUARIO \\
 
