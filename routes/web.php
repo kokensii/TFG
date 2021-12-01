@@ -89,7 +89,7 @@ Route::get('question/showAll', 'App\Http\Controllers\QuestionController@showAll'
 
 Route::get('round/create', 'App\Http\Controllers\JornadaController@create')->name('round.create');
 
-Route::post('round/store', 'App\Http\Controllers\JornadaController@store')->name('round.store');
+Route::post('round/store', 'App\Http\Controllers\BetRoundController@store')->name('round.store');
 
 Route::get('round/{round}/edit', 'App\Http\Controllers\JornadaController@edit')->name('round.edit');
 

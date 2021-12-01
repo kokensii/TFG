@@ -12,7 +12,7 @@ class BetRound extends Model
     public $table = "bet_round";
     protected $fillable = [
         'id', 'id_home_team', 'id_away_team', 'result', 'id_home_team_2', 'id_away_team_2', 
-        'result_2', 'id_jornada', 'end', 'updated_at', 'created_at',
+        'result_2', 'id_jornada', 'season', 'end', 'updated_at', 'created_at',
     ];
     function equipo(){
         return $this->hasOne('Team','id_home_team');
