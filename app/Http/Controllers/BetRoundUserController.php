@@ -39,9 +39,17 @@ class BetRoundUserController extends Controller
      */
     public function store(Request $request)
     {
-        $round = BetRoundUser::create($request->all());
+        $allBets = BetRound::all();
+        $lastBet = $allBets->last();
+
+        $bet = new BetRoundUser;
+        $bet->id_round = $lastBet->id;
+        $bet->result_user_1 = $request['result_user_1'];
+        $bet->result_user_2 = $request['result_user_2'];
+        $bet->end = true;
+        $bet->save();
         
-        return redirect()->route('index');
+        return view('users.index');
     }
 
     /**
