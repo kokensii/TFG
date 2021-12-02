@@ -90,7 +90,7 @@
 								<a href="{{ route('questionUser.answer') }}">Preguntas</a>
 							</li>
 							<li>
-								<a href="{{ route('round.porra') }}">Porra</a>
+								<a href="{{ route('round.isBetDone') }}">Porra</a>
 							</li>
 							<li>
 								<a href="#">{{ Auth::user()->coin }} monedas</a>

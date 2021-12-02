@@ -95,4 +95,5 @@ class BetRoundController extends Controller
         $betRound->delete();
         return redirect()->route('round.showAll');
     }
+
 }

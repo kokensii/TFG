@@ -113,6 +113,8 @@ Route::post('questionUser/{question}', 'App\Http\Controllers\QuestionController@
 
 Route::get('round/porra', 'App\Http\Controllers\PorraController@porra')->name('round.porra');
 
+Route::get('round/bet', 'App\Http\Controllers\BetRoundUserController@isBetDone')->name('round.isBetDone');
+
 
 /* Añadir los controladores de los nuevos modelos y las rutas */
 

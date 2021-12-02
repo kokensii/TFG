@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Round;
 use App\Models\Team;
 use App\Models\BetRoundUser;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BetRoundUserController extends Controller
 {
@@ -106,5 +107,18 @@ class BetRoundUserController extends Controller
 
     }
 
+    public function isBetDone()
+    {
+        $bets = BetRoundUser::all();
+        $lastBet = $bets->last();
 
+        if(!empty($lastBet)){
+            if($lastBet->end){
+                Alert::info('Atento', 'Ya has hecho la porra de la semana')->autoclose(3500);
+                return view('users.index');
+            }
+        }
+
+        return view('interaccion_usuarios.play_porra');
+    }
 }
