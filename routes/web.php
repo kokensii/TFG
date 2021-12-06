@@ -91,6 +91,8 @@ Route::get('round/create', 'App\Http\Controllers\BetRoundController@create')->na
 
 Route::post('round/store', 'App\Http\Controllers\BetRoundController@store')->name('round.store');
 
+Route::post('bet/store', 'App\Http\Controllers\BetRoundUserController@store')->name('bet.store');
+
 Route::get('round/{betRound}/edit', 'App\Http\Controllers\BetRoundController@edit')->name('round.edit');
 
 Route::put('round/{betRound}', 'App\Http\Controllers\BetRoundController@update')->name('round.update');

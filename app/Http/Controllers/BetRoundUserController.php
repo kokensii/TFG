@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Round;
 use App\Models\Team;
 use App\Models\BetRoundUser;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class BetRoundUserController extends Controller
@@ -44,8 +46,8 @@ class BetRoundUserController extends Controller
 
         $bet = new BetRoundUser;
         $bet->id_round = $lastBet->id;
-        $bet->result_user_1 = $request['result_user_1'];
-        $bet->result_user_2 = $request['result_user_2'];
+        $bet->result_user_1 = $request['resultado'];
+        $bet->result_user_2 = $request['resultado2'];
         $bet->end = true;
         $bet->save();
         
@@ -115,18 +117,59 @@ class BetRoundUserController extends Controller
 
     }
 
+    public function addCoins(BetRoundUser $betRoundUser, BetRound $betRound)
+    {
+        $user = User::find(Auth::user()->id);
+
+        if($betRound->result == $betRoundUser->result_user_1 && $betRound->result2 == $betRoundUser->result_user_2){
+            $user->coin += 100;
+            $acierto = true;
+            $user->save();
+        }else $acierto = false;
+
+        return $acierto;
+    }
+
     public function isBetDone()
     {
-        $bets = BetRoundUser::all();
-        $lastBet = $bets->last();
+        $allBetRound = BetRound::all();
+        $betRound = $allBetRound->last(); // Admin bet
+        $allBetRoundUser = BetRoundUser::all();
+        $betRoundUser = $allBetRoundUser->last(); // User lastbet
+        $teams = Team::all();
 
-        if(!empty($lastBet)){
-            if($lastBet->end){
-                Alert::info('Atento', 'Ya has hecho la porra de la semana')->autoclose(3500);
-                return view('users.index');
+        if(empty($betRound)){
+            Alert::info('Atento', 'No hay ninguna porra en juego')->autoclose(3500);
+            return view('users.index'); //FUNCIONA
+        }else{
+            if(!empty($betRoundUser)){
+                if($betRoundUser->end){
+                    if($betRoundUser->id_round == $betRound->id){
+                        if(!$betRound->end){
+                            Alert::info('Atento', 'Ya has hecho la porra de la semana')->autoclose(3500);
+                            return view('users.index');//FUNCIONA
+                        }else{
+                            if(!$betRound->done){
+                                $acierto = $this->addCoins($betRoundUser, $betRound);
+                                $betRound->done = true;
+                                $betRound->save();
+                                if($acierto){
+                                    Alert::success('Enhorabuena!', 'Has ganado la porra de la semana');
+                                }else Alert::error('Lo siento...', 'No has acertado la porra de la semana');
+                            }else Alert::info('Porra finalizada', 'Estamos haciendo la porra de la semana siguiente');
+                            return view('users.index');
+                        }
+                    }
+                    else return view('interaccion_usuarios.play_porra', compact('betRound', 'teams')); //FUNCIONA
+                }
+            }else{
+                return view('interaccion_usuarios.play_porra', compact('betRound', 'teams')); //FUNCIONA
             }
         }
+    }
 
-        return view('interaccion_usuarios.play_porra');
+    public function porra(Request $request, BetRound $betRound)
+    {
+        $betRoundUser = $this->store($request);
     }
 }

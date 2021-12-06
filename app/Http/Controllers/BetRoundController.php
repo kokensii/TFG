@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BetRound;
+use App\Models\BetRoundUser;
 use App\Models\Team;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BetRoundController extends Controller
 {
@@ -96,4 +100,34 @@ class BetRoundController extends Controller
         return redirect()->route('round.showAll');
     }
 
+    public function addCoins(BetRoundUser $bet, BetRound $betRound)
+    {
+        $user = User::find(Auth::user()->id);
+
+        if($betRound->result == $bet->result_user_1 &&
+           $betRound->result2 == $bet->result_user_2){
+                   $user->coin += 100;
+                   $acierto = true;
+                   $user->save();
+        }else $acierto = false;
+
+        return $acierto;  
+    }
+
+    public function isBetDone(BetRound $betRound)
+    {
+        $bets = BetRoundUser::all();
+        $bet = $bets->last();
+        
+
+        if($betRound->end){
+            $acierto = $this->addCoins($bet, $betRound);
+
+            if($acierto){
+                Alert::success('Enhorabuena!', 'Has ganado la porra semanal')->autoclose(3500);
+            }else Alert::error('Lo siento...', 'No has acertado la porra semanal')->autoclose(3500);
+
+            return view('users.index');
+        }
+    }
 }
