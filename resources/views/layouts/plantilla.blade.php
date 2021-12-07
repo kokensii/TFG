@@ -93,6 +93,24 @@
 								<a href="{{ route('round.isBetDone') }}">Porra</a>
 							</li>
 							<li>
+								<label for="btn-4" class="show">Cromos</label>
+								<a href="#">
+									Cromos <span class="caret"></span>
+								</a>
+								<input type="checkbox" id="btn-4">
+								<ul class="dropdown-menu mr-auto" arial-labellebdy="navbarDropdownMenuLink">
+									<li>
+										<a href="#">Comprar</a>
+									</li>
+									<li>
+										<a href="#">Cambiar</a>
+									</li>
+									<li>
+										<a href="#">Repetidos</a>
+									</li>
+								</ul>
+							</li>
+							<li>
 								<a href="#">{{ Auth::user()->coin }} monedas</a>
 							</li>
 							<li>
@@ -106,7 +124,7 @@
 										<a href="{{ route('logout') }}"
 											onclick="event.preventDefault();
 											document.getElementById('logout-form').submit();">
-											{{ __('Logout') }}
+											{{ __('Cerrar sesión') }}
 										</a>
 										
 										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -115,7 +133,7 @@
 									</li>
 									<li>
 										<a href="{{ route('profile', Auth::user()) }}">
-											{{ __('My profile') }}
+											{{ __('Mi perfil') }}
 										</a>
 									</li>
 								</ul>
