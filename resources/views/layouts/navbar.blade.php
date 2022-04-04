@@ -88,15 +88,19 @@
 							</li>
 						@else
 							<li>
-								<a href="{{ route('questionUser.answer') }}">Preguntas</a>
+								
+								<a href="{{ route('questionUser.answer') }}"><i class='bx bx-question-mark'></i> Preguntas</a>
+									
+									
+								
 							</li>
 							<li>
-								<a href="{{ route('round.isBetDone') }}">Porra</a>
+								<a href="{{ route('round.isBetDone') }}"><i class='bx bx-pencil'></i> Porra</a>
 							</li>
 							<li>
 								<label for="btn-4" class="show">Cromos</label>
 								<a href="#">
-									Cromos <span class="caret"></span>
+									<i class='bx bx-photo-album'></i> Cromos <span class="caret"></span>
 								</a>
 								<input type="checkbox" id="btn-4">
 								<ul class="dropdown-menu mr-auto" arial-labellebdy="navbarDropdownMenuLink">
@@ -112,12 +116,12 @@
 								</ul>
 							</li>
 							<li>
-								<a href="#">{{ Auth::user()->coin }} monedas</a>
+								<a href="#"><i class='bx bx-coin-stack' style="color: #e9d30c"></i> {{ Auth::user()->coin }} monedas</a>
 							</li>
 							<li>
 								<label for="btn-3" class="show">{{ Auth::user()->name }} →</label>
 								<a href="#">
-									{{ Auth::user()->name }} <span class="caret"></span>
+									<i class='bx bx-user'></i> {{ Auth::user()->name }} <span class="caret"></span>
 								</a>
 								<input type="checkbox" id="btn-3">
 								<ul class="dropdown-menu mr-auto" aria-labelledby="navbarDropdownMenuLink">

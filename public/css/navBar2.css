@@ -7,10 +7,16 @@
 
 body{
     background: #f2f2f2;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    /*overflow: hdden;*/
 }
 
 .navbar{
     background: #1b1b1b;
+    top: 0;
 }
 
 .navbar:after{
@@ -21,7 +27,7 @@ body{
 
 .navbar .brand-title{
     float: left;
-    color: white;
+    color: cyan;
     font-size: 27px;
     font-weight: 600;
     line-height: 70px;
