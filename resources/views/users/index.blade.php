@@ -1,4 +1,5 @@
-@extends('layouts.plantilla')
+<!-- @ extends('layouts.plantilla') -->
+@extends('layouts.navbar')
 
 @section('title', 'Bienvenido')
 

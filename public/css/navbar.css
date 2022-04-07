@@ -23,6 +23,12 @@ nav:after{
 .brand-title{
     font-size: 1.5rem;
     margin: .5rem;
+    float: left;
+    color: red;
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 70px;
+    padding-left: 60px;
 }
 
 .navbar-links ul{
