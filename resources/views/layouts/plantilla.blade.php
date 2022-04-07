@@ -25,7 +25,11 @@
 		<!-- nav -->
 		@include('sweetalert::alert')
 		<nav class="navbar">
-			<div class="brand-title">Cromitos</div>
+			
+			<div class="brand-title">
+				<label>Cromitos</label>
+			</div>
+
 			<label for="btn" class="icon">
 				<span class="fa fa-bars"></span>
 			</label>
@@ -100,13 +104,16 @@
 								<input type="checkbox" id="btn-4">
 								<ul class="dropdown-menu mr-auto" arial-labellebdy="navbarDropdownMenuLink">
 									<li>
-										<a href="#">Comprar</a>
+										<a href="{{ route('card.vistaComprar') }}">Comprar</a>
 									</li>
 									<li>
 										<a href="#">Cambiar</a>
 									</li>
 									<li>
-										<a href="#">Repetidos</a>
+										<a href="{{ route('repetido.lista') }}">Repetidos</a>
+									</li>
+									<li>
+										<a href="{{ route('card.index') }}">Listado</a>
 									</li>
 								</ul>
 							</li>

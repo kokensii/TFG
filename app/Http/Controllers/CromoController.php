@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Card;
 use App\Models\Team;
+use App\Models\Player;
+use App\Models\Repetido;
+use Illuminate\Support\Facades\Auth;
 
 class CromoController extends Controller
 {
@@ -15,7 +18,16 @@ class CromoController extends Controller
      */
     public function index()
     {
-        //
+        $players = Player::get();
+        $jugadores = array();
+
+        $cromos = $this->cromosUsuario();
+
+        foreach ( $cromos as $cromo ) {
+            array_push($jugadores, $players[$cromo->id_player-1]);
+        }
+
+        return view('interaccion_usuarios.cromos', compact('jugadores'));
     }
 
     /**
@@ -40,6 +52,90 @@ class CromoController extends Controller
         $card = Card::create($request->all());
         
         return redirect()->route('index');
+    }
+
+    public function isCromo($idPlayer, $cromos)
+    {
+        //$i = 0;
+        $encontrado = false;
+
+        /* while($i < count($cromos) && $encontrado) {
+            if ($cromos->id_player == $idPlayer) $encontrado = true;
+        } */
+
+        foreach( $cromos as $cromo ) {
+            if ( $cromo->id_player == $idPlayer ) $encontrado = true;
+        }
+
+        return $encontrado;
+    }
+
+    // Devuelve los cromos que pertenecen al usuario
+    public function cromosUsuario() {
+        $cards = Card::get();
+        $cromos = array();
+
+        foreach ( $cards as $card ) {
+            if ( $card->id_user == Auth::user()->id ) {
+                array_push($cromos, $card);
+            }
+        }
+
+        return $cromos;
+    }
+
+    public function guardarCromos($numCromos)
+    {
+        // Obtenemos todos los jugadores
+        $players = Player::get();
+        $jugadores = array();
+
+        // Guardamos en el array "jugadores" los jugadores de forma aleatoria
+        for ($i = 0; $i < $numCromos; $i++) {
+            $rand = rand(0, count($players) - 1);
+            array_push($jugadores, $players[$rand]); 
+        }
+
+        // Variable con los cromos del usuario
+        $cromos = $this->cromosUsuario();
+
+        // Guardamos los jugadores en la base de datos
+        /* for ($i = 0; $i < $numCromos; $i++) {
+            if($this->isCromo($jugadores[$i], $cromos) == false) {
+                $card = new Card;
+                $card->id_player = $jugadores[$i];
+                $card->id_user = Auth::user()->id;
+            }
+            else{
+                $repetido = new Repetido;
+                $repetido->id_player = $jugadores[$i];
+                $repetido->id_user = Auth::user()->id;
+            }
+        } */
+
+        foreach ($jugadores as $jugador ) {
+            if($this->isCromo($jugador->id, $cromos) == false) {
+                $card = new Card;
+                $card->id = "$jugador->id" . "$jugador->nombre" . Auth::user()->name . rand(0, 10000);
+                $card->id_player = $jugador->id;
+                $card->id_user = Auth::user()->id;
+                $card->save();
+            }
+            else{
+                $repetido = new Repetido;
+                $repetido->id = "$jugador->id" . "$jugador->nombre" . Auth::user()->name . rand(0, 10000);
+                $repetido->id_player = $jugador->id;
+                $repetido->id_user = Auth::user()->id;
+                $repetido->save();
+            }
+        }
+
+        return $jugadores;
+    }
+
+    public function comprarCromos() {
+        $numCromos = 3;
+        return view('interaccion_usuarios.comprar_cromos', compact('numCromos'));
     }
 
     /**

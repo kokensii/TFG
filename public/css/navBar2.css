@@ -11,6 +11,11 @@ body{
 
 .navbar{
     background: #1b1b1b;
+    height: 100%;
+    list-style: none;
+    overflow: auto;
+    position: fixed;
+    width: 220px;
 }
 
 .navbar:after{

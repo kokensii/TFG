@@ -59,6 +59,8 @@ Route::get('team/showAll', 'App\Http\Controllers\TeamController@showAll')->name(
 
 //// Card \\\\
 
+Route::get('card/index', 'App\Http\Controllers\CromoController@index')->name('card.index');
+
 Route::get('card/create', 'App\Http\Controllers\CromoController@create')->name('card.create');
 
 Route::post('card/store', 'App\Http\Controllers\CromoController@store')->name('card.store');
@@ -70,6 +72,10 @@ Route::put('card/{card}', 'App\Http\Controllers\CromoController@update')->name('
 Route::delete('card/{card}', 'App\Http\Controllers\CromoController@destroy')->name('card.destroy');
 
 Route::get('card/showAll', 'App\Http\Controllers\CromoController@showAll')->name('card.showAll');
+
+Route::get('card/comprar', 'App\Http\Controllers\CromoController@comprarCromos')->name('card.vistaComprar');
+
+Route::post('card/comprar/{numCromos}', 'App\Http\Controllers\CromoController@guardarCromos')->name('card.comprar');
 
 //// Cuestiones \\\\
 
@@ -124,3 +130,5 @@ Route::get('round/bet', 'App\Http\Controllers\BetRoundUserController@isBetDone')
 Route::post('porra/store', 'App\Http\Controllers\BetRoundUserController@store')->name('porra.store');
 
 Route::get('porra/play', 'App\Http\Controllers\BetRoundUserController@play')->name('porra.play');
+
+Route::get('repetido/lista', 'App\Http\Controllers\RepetidoController@index')->name('repetido.lista');
