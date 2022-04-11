@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.navbar')
 
 @section('title', 'Listado de cromos')
 

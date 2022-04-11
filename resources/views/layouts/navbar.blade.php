@@ -26,7 +26,9 @@
 		<!-- nav -->
 		@include('sweetalert::alert')
 		<nav class="navbar">
-			<div class="brand-title">Cromitos</div>
+			<div>
+				<a href="{{ route('user.index')}}" class="brand-title">{{ __('Cromitos') }}</a>
+			</div>
 			<label for="btn" class="icon">
 				<span class="fa fa-bars"></span>
 			</label>
@@ -89,29 +91,31 @@
 						@else
 							<li>
 								
-								<a href="{{ route('questionUser.answer') }}"><i class='bx bx-question-mark'></i> Preguntas</a>
-									
+								<a href="{{ route('questionUser.answer') }}"><i class='bx bx-question-mark' style="color: #e71b0de5"></i> Preguntas</a>
 									
 								
 							</li>
 							<li>
-								<a href="{{ route('round.isBetDone') }}"><i class='bx bx-pencil'></i> Porra</a>
+								<a href="{{ route('round.isBetDone') }}"><i class='bx bx-pencil' style="color: #e00ae7"></i> Porra</a>
 							</li>
 							<li>
 								<label for="btn-4" class="show">Cromos</label>
 								<a href="#">
-									<i class='bx bx-photo-album'></i> Cromos <span class="caret"></span>
+									<i class='bx bx-photo-album' style="color: #26e90cd3"></i> Cromos <span class="caret"></span>
 								</a>
 								<input type="checkbox" id="btn-4">
 								<ul class="dropdown-menu mr-auto" arial-labellebdy="navbarDropdownMenuLink">
 									<li>
-										<a href="#">Comprar</a>
+										<a href="{{ route('card.vistaComprar') }}">Comprar</a>
 									</li>
 									<li>
 										<a href="#">Cambiar</a>
 									</li>
 									<li>
-										<a href="#">Repetidos</a>
+										<a href="{{ route('repetido.lista') }}">Repetidos</a>
+									</li>
+									<li>
+										<a href="{{ route('card.index') }}">Listado</a>
 									</li>
 								</ul>
 							</li>
@@ -121,7 +125,7 @@
 							<li>
 								<label for="btn-3" class="show">{{ Auth::user()->name }} →</label>
 								<a href="#">
-									<i class='bx bx-user'></i> {{ Auth::user()->name }} <span class="caret"></span>
+									<i class='bx bx-user' style="color: #f18d09"></i> {{ Auth::user()->name }} <span class="caret"></span>
 								</a>
 								<input type="checkbox" id="btn-3">
 								<ul class="dropdown-menu mr-auto" aria-labelledby="navbarDropdownMenuLink">
