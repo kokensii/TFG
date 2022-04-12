@@ -134,8 +134,10 @@ class CromoController extends Controller
     }
 
     public function comprarCromos() {
-        $numCromos = 3;
-        return view('interaccion_usuarios.comprar_cromos', compact('numCromos'));
+        $numCromos1 = 1;
+        $numCromos3 = 3;
+        $numCromos5 = 5;
+        return view('interaccion_usuarios.comprar_cromos', compact('numCromos1', 'numCromos3', 'numCromos5'));
     }
 
     /**
