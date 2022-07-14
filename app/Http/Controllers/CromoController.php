@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Card;
 use App\Models\Team;
+use App\Models\User;
 use App\Models\Player;
 use App\Models\Repetido;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CromoController extends Controller
 {
@@ -19,6 +21,7 @@ class CromoController extends Controller
     public function index()
     {
         $players = Player::get();
+        $teams = Team::get();
         $jugadores = array();
 
         $cromos = $this->cromosUsuario();
@@ -27,7 +30,7 @@ class CromoController extends Controller
             array_push($jugadores, $players[$cromo->id_player-1]);
         }
 
-        return view('interaccion_usuarios.cromos', compact('jugadores'));
+        return view('interaccion_usuarios.cromos', compact('jugadores', 'teams'));
     }
 
     /**
@@ -86,51 +89,59 @@ class CromoController extends Controller
 
     public function guardarCromos($numCromos)
     {
-        // Obtenemos todos los jugadores
-        $players = Player::get();
-        $jugadores = array();
+        // Usuario actual
+        $user = User::find(Auth::user()->id);
 
-        // Guardamos en el array "jugadores" los jugadores de forma aleatoria
-        for ($i = 0; $i < $numCromos; $i++) {
-            $rand = rand(0, count($players) - 1);
-            array_push($jugadores, $players[$rand]); 
-        }
+        // Colocamos los precios a cada número de cromos
+        if ($numCromos == 1) $precio = 20;
+        elseif ($numCromos == 3) $precio = 50;
+        else $precio = 75;
 
-        // Variable con los cromos del usuario
-        $cromos = $this->cromosUsuario();
+        if($user->coin > $precio){
+            // Obtenemos todos los jugadores
+            $players = Player::get();
+            $jugadores = array();
 
-        // Guardamos los jugadores en la base de datos
-        /* for ($i = 0; $i < $numCromos; $i++) {
-            if($this->isCromo($jugadores[$i], $cromos) == false) {
-                $card = new Card;
-                $card->id_player = $jugadores[$i];
-                $card->id_user = Auth::user()->id;
+            // Quitamos las monedas correspondientes
+            $user->coin -= $precio;
+            $user->save();
+
+            // Guardamos en el array "jugadores" los jugadores de forma aleatoria
+            for ($i = 0; $i < $numCromos; $i++) {
+                $rand = rand(0, count($players) - 1);
+                array_push($jugadores, $players[$rand]); 
             }
-            else{
-                $repetido = new Repetido;
-                $repetido->id_player = $jugadores[$i];
-                $repetido->id_user = Auth::user()->id;
-            }
-        } */
 
-        foreach ($jugadores as $jugador ) {
-            if($this->isCromo($jugador->id, $cromos) == false) {
-                $card = new Card;
-                $card->id = "$jugador->id" . "$jugador->nombre" . Auth::user()->name . rand(0, 10000);
-                $card->id_player = $jugador->id;
-                $card->id_user = Auth::user()->id;
-                $card->save();
-            }
-            else{
-                $repetido = new Repetido;
-                $repetido->id = "$jugador->id" . "$jugador->nombre" . Auth::user()->name . rand(0, 10000);
-                $repetido->id_player = $jugador->id;
-                $repetido->id_user = Auth::user()->id;
-                $repetido->save();
-            }
-        }
+            // Variable con los cromos del usuario
+            $cromos = $this->cromosUsuario();
+            $mesagge = '';
 
-        return $jugadores;
+            foreach ($jugadores as $jugador ) {
+                if($this->isCromo($jugador->id, $cromos) == false) {
+                    $card = new Card;
+                    $card->id = "$jugador->id" . "$jugador->nombre" . Auth::user()->name . rand(0, 10000);
+                    $card->id_player = $jugador->id;
+                    $card->id_user = Auth::user()->id;
+                    $card->save();
+                }
+                else{
+                    $repetido = new Repetido;
+                    $repetido->id = "$jugador->id" . "$jugador->nombre" . Auth::user()->name . rand(0, 10000);
+                    $repetido->id_player = $jugador->id;
+                    $repetido->id_user = Auth::user()->id;
+                    $repetido->save();
+                }
+                $mesagge = $mesagge . ' ' . $jugador->nombre;
+            }
+
+            $mesagge1 = 'Los cromos que te han tocado han sido:';
+
+            /* return $user->coin;
+            return $jugadores; */
+            
+            Alert::success($mesagge1, $mesagge);
+            return view('users.index');
+        } 
     }
 
     public function comprarCromos() {
