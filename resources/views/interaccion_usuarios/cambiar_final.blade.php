@@ -1,6 +1,6 @@
-@extends( 'layouts.navbar' );
+@extends( 'layouts.navbar' )
 
-@section( 'title', 'Cambiar cromos' );
+@section( 'title', 'Cambiar cromos' )
 
 @section( 'content' )
     <div class="wrapper">
