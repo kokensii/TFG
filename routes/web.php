@@ -59,7 +59,9 @@ Route::get('team/showAll', 'App\Http\Controllers\TeamController@showAll')->name(
 
 //// Card \\\\
 
-Route::get('card/index', 'App\Http\Controllers\CromoController@index')->name('card.index');
+Route::get('card/index', 'App\Http\Controllers\CromoController@vistaEquipo')->name('card.vistaEquipos');
+
+Route::get('card/index/{id}', 'App\Http\Controllers\CromoController@index')->name('card.index');
 
 Route::get('card/create', 'App\Http\Controllers\CromoController@create')->name('card.create');
 

@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="{{ asset('css/estiloForm.css') }}">
 		<link rel="stylesheet" href="{{ asset('css/navBar2.css') }}">
 		<link rel="stylesheet" href="{{ asset('css/comprar.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/cromo.css') }}">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel=”stylesheet” href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
 		<!--boxicons-->
@@ -116,7 +117,7 @@
 										<a href="{{ route('repetido.lista') }}">Repetidos</a>
 									</li>
 									<li>
-										<a href="{{ route('card.index') }}">Listado</a>
+										<a href="{{ route('card.vistaEquipos') }}">Listado</a>
 									</li>
 								</ul>
 							</li>

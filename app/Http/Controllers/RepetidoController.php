@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use PhpParser\Node\Expr\Cast\Object_;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Arr;
+use Illuminate\Validation\Rules\Exists;
 
 class RepetidoController extends Controller
 {
@@ -27,13 +29,20 @@ class RepetidoController extends Controller
         $players = Player::get();
         $jugadores = array();
 
+        $repetidosAgrupados = collect();
+
+
         foreach($repetidos as $repetido) {
             if($repetido->id_user == Auth::user()->id) {
                 array_push($jugadores, $players[$repetido->id_player-1]);
             }
         }
 
-        return view('interaccion_usuarios.repetidos', compact('jugadores'));
+        foreach ($players as $player) {
+            $repetidosAgrupados = $repetidosAgrupados->push((object)['id_player' => $player->id, 'contador' => Repetido::where('id_player', $player->id)->count()]);
+        }
+
+        return view('interaccion_usuarios.repetidos', compact('jugadores','repetidosAgrupados'));
     }
 
     /**

@@ -18,7 +18,7 @@ class CromoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         $players = Player::get();
         $teams = Team::get();
@@ -30,7 +30,7 @@ class CromoController extends Controller
             array_push($jugadores, $players[$cromo->id_player-1]);
         }
 
-        return view('interaccion_usuarios.cromos', compact('jugadores', 'teams'));
+        return view('interaccion_usuarios.cromos', compact('jugadores', 'teams','id'));
     }
 
     /**
@@ -149,6 +149,13 @@ class CromoController extends Controller
         $numCromos3 = 3;
         $numCromos5 = 5;
         return view('interaccion_usuarios.comprar_cromos', compact('numCromos1', 'numCromos3', 'numCromos5'));
+    }
+
+    public function vistaEquipo(){
+
+        $teams = Team::get();
+
+        return view('interaccion_usuarios.listado_equipos' , compact('teams'));
     }
 
     /**

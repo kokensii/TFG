@@ -1,0 +1,30 @@
+.equipo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    vertical-align: text-bottom;
+}
+
+.prueba{
+    display: flex;
+}
+
+.pruebaCol{
+    flex:0 0 33.3333333333%;max-width:33.3333333333%
+}
+
+
+.nombre_equipo {
+
+    width: 100%;
+    text-align: center;
+    margin-top: -40%;
+}
+
+.cromos_equipo {
+    
+    width: 90%;
+    text-align: center;
+    vertical-align: text-bottom;
+}

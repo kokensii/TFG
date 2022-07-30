@@ -114,7 +114,7 @@
 										<a href="{{ route('repetido.lista') }}">Repetidos</a>
 									</li>
 									<li>
-										<a href="{{ route('card.index') }}">Listado</a>
+										<a href="{{ route('card.vistaEquipos') }}">Listado</a>
 									</li>
 								</ul>
 							</li>
