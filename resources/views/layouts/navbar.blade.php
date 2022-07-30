@@ -110,7 +110,7 @@
 										<a href="{{ route('card.vistaComprar') }}">Comprar</a>
 									</li>
 									<li>
-										<a href="#">Cambiar</a>
+										<a href="{{ route( 'repetidos.user' ) }}">Cambiar</a>
 									</li>
 									<li>
 										<a href="{{ route('repetido.lista') }}">Repetidos</a>

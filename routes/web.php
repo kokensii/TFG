@@ -131,4 +131,12 @@ Route::post('porra/store', 'App\Http\Controllers\BetRoundUserController@store')-
 
 Route::get('porra/play', 'App\Http\Controllers\BetRoundUserController@play')->name('porra.play');
 
-Route::get('repetido/lista', 'App\Http\Controllers\RepetidoController@index')->name('repetido.lista');
+Route::get('repetidos/lista', 'App\Http\Controllers\RepetidoController@index')->name('repetido.lista');
+
+Route::get('cambios/preguntas', 'App\Http\Controllers\RepetidoController@cambiarCromos')->name('cambios.preguntas');
+
+Route::get( 'repes/cambiar', 'App\Http\Controllers\RepetidoController@repesYUsers' )->name( 'repetidos.user' );
+
+Route::post( 'repes/cambiar/{idUser}', 'App\Http\Controllers\RepetidoController@cambiarRepes')->name( 'repes.cambiar' );
+
+Route::post( 'repes/cambiarFinal', 'App\Http\Controllers\RepetidoController@cambioFinal' )->name( 'repes.cambioFinal' );

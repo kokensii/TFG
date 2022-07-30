@@ -119,14 +119,14 @@ class CromoController extends Controller
             foreach ($jugadores as $jugador ) {
                 if($this->isCromo($jugador->id, $cromos) == false) {
                     $card = new Card;
-                    $card->id = "$jugador->id" . "$jugador->nombre" . Auth::user()->name . rand(0, 10000);
+                    $card->id = "$jugador->id" . rand(0, 10000) . rand(0,10000);
                     $card->id_player = $jugador->id;
                     $card->id_user = Auth::user()->id;
                     $card->save();
                 }
                 else{
                     $repetido = new Repetido;
-                    $repetido->id = "$jugador->id" . "$jugador->nombre" . Auth::user()->name . rand(0, 10000);
+                    $repetido->id = "$jugador->id" . rand(0, 10000) . rand(0,10000);
                     $repetido->id_player = $jugador->id;
                     $repetido->id_user = Auth::user()->id;
                     $repetido->save();
