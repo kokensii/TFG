@@ -6,20 +6,25 @@
     vertical-align: text-bottom;
 }
 
-.prueba{
+.fila{
     display: flex;
+    margin: 1em;
 }
 
-.pruebaCol{
-    flex:0 0 33.3333333333%;max-width:33.3333333333%
+.columna{
+    flex:0 0 33.3333333333%;
+    max-width:28.3333333333%
 }
 
+.container.withScroll{
+    height: calc(100% - 4.5em);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 
-.nombre_equipo {
-
+.no-wrapper{
     width: 100%;
-    text-align: center;
-    margin-top: -40%;
+    height: 100%;
 }
 
 .cromos_equipo {
@@ -27,4 +32,49 @@
     width: 90%;
     text-align: center;
     vertical-align: text-bottom;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}
+
+.negrita{
+    font-weight: bold;
+}
+
+
+.preinicio{
+
+    font-size: 50px;
+    text-align: center;
+    color: #005252;
+    scroll-behavior: smooth;
+}
+
+.slogan{
+
+    font-size: 20px;
+    color: #005252;
+}
+
+.inicio{
+    margin: 1em;
+    text-align: center;
+    height: 100%;
+    color: #005252;
+}
+
+li{
+    text-align: left;
+}
+
+.lista{
+    margin-top: 7em;
+}
+
+.jugar{
+    font-size: 100px;
+    font-family: cursive;
+    margin-top: 1em;
 }

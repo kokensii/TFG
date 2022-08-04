@@ -19,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 // USUARIOS \\
 
 Route::get('user/create', 'App\Http\Controllers\UserController@create')->name('user.create');

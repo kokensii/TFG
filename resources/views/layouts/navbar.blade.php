@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width-device-width, initial-scale-1.0">
         <title>@yield('title')</title>
 		
+		
 		<link rel="stylesheet" href="{{ asset('css/estiloForm.css') }}">
 		<link rel="stylesheet" href="{{ asset('css/navBar2.css') }}">
 		<link rel="stylesheet" href="{{ asset('css/comprar.css') }}">
@@ -29,7 +30,9 @@
 		@include('sweetalert::alert')
 		<nav class="navbar">
 			<div>
+				@if(Auth::user() != null)
 				<a href="{{ route('user.index')}}" class="brand-title">{{ __('Cromitos') }}</a>
+				@endif
 			</div>
 			<label for="btn" class="icon">
 				<span class="fa fa-bars"></span>
