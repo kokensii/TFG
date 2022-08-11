@@ -101,6 +101,7 @@ class CromoController extends Controller
             // Obtenemos todos los jugadores
             $players = Player::get();
             $jugadores = array();
+            $randoms = array();
 
             // Quitamos las monedas correspondientes
             $user->coin -= $precio;
@@ -108,7 +109,22 @@ class CromoController extends Controller
 
             // Guardamos en el array "jugadores" los jugadores de forma aleatoria
             for ($i = 0; $i < $numCromos; $i++) {
-                $rand = rand(0, count($players) - 1);
+                $encontrado = false;
+                while ( !$encontrado ) {
+                    $rand = rand(0, count($players) - 1);
+                    $existe = false;
+                    
+                    $j = 0;
+                    while ( $j < count ( $randoms ) && !$existe ) {
+                        if ( $rand == $randoms[$j] ) $existe = true;
+                        $j++;
+                    }
+
+                    if ( !$existe ) {
+                        $encontrado = true; 
+                    }
+                }
+                array_push($randoms, $rand);
                 array_push($jugadores, $players[$rand]); 
             }
 
