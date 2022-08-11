@@ -161,8 +161,10 @@ class RepetidoController extends Controller
                 $id = $idUser;
             }
         }
+
+        $actual_user_id = Auth::user()->id;
         
-        return view( 'interaccion_usuarios.cambiar_repes', compact( 'repes', 'users' ));
+        return view( 'interaccion_usuarios.cambiar_repes', compact( 'repes', 'users', 'actual_user_id' ));
     }
 
     public function cambiarRepes( $idUser ) {
