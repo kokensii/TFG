@@ -39,7 +39,7 @@ class RepetidoController extends Controller
         }
 
         foreach ($players as $player) {
-            $repetidosAgrupados = $repetidosAgrupados->push((object)['id_player' => $player->id, 'contador' => Repetido::where('id_player', $player->id)->count()]);
+            $repetidosAgrupados = $repetidosAgrupados->push((object)['id_player' => $player->id, 'contador' => Repetido::where('id_user', Auth::user()->id)->where('id_player', $player->id)->count()]);
         }
 
         return view('interaccion_usuarios.repetidos', compact('jugadores','repetidosAgrupados'));
