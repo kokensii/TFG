@@ -10,6 +10,7 @@ use App\Models\Player;
 use App\Models\Repetido;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use SplFixedArray;
 
 class CromoController extends Controller
 {
@@ -113,7 +114,7 @@ class CromoController extends Controller
                 while ( !$encontrado ) {
                     $rand = rand(0, count($players) - 1);
                     $existe = false;
-                    
+
                     $j = 0;
                     while ( $j < count ( $randoms ) && !$existe ) {
                         if ( $rand == $randoms[$j] ) $existe = true;
@@ -170,8 +171,26 @@ class CromoController extends Controller
     public function vistaEquipo(){
 
         $teams = Team::get();
+        //User::select('name')->where('id', $idUser->id_user)->get();
+        $players = Card::orderBy('id_player')->where('id_user', Auth::user()->id)->get();
+        $array_players = array();
+        $numCards = array_fill(0, count($teams), 0);
 
-        return view('interaccion_usuarios.listado_equipos' , compact('teams'));
+        foreach ( $players as $player ) {
+            array_push( $array_players, Player::where('id', $player->id_player)->get()[0] );
+        }
+
+        $j = 1;
+        for ( $i = 0; $i < count($array_players); $i++ ) {
+            if ( ($j) == $array_players[$i]->id_equipo ) {
+                $numCards[$j-1]++;
+            } else {
+                $j = $array_players[$i]->id_equipo;
+                $numCards[$j-1]++;
+            }
+        }
+
+        return view('interaccion_usuarios.listado_equipos' , compact('teams', 'numCards'));
     }
 
     /**

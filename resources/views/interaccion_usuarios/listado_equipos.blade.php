@@ -14,7 +14,8 @@
                     <a href="{{ route('card.index', $team->id) }}">
                         @php($variable = "../../../../" . $team->urlImage)
                         <img src = {{$variable}} width=100 height=100>
-                        <h2>{{ $team->name }} {{--(0/4)--}}</h2>
+                        <h2>{{ $team->name }}</h2>
+                        <h4>{{ $numCards[$team->id-1] }}/4</h4>
                     </a>
                 @php($indice=$indice+1)
             </div>
