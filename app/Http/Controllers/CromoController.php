@@ -157,7 +157,7 @@ class CromoController extends Controller
             return $jugadores; */
             
             Alert::success($mesagge1, $mesagge);
-            return view('users.index');
+            return redirect()->route('user.index');
         } 
     }
 
