@@ -16,6 +16,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Arr;
 use Illuminate\Validation\Rules\Exists;
 
+use function PHPUnit\Framework\isEmpty;
+
 class RepetidoController extends Controller
 {
     /**
@@ -42,7 +44,12 @@ class RepetidoController extends Controller
             $repetidosAgrupados = $repetidosAgrupados->push((object)['id_player' => $player->id, 'contador' => Repetido::where('id_user', Auth::user()->id)->where('id_player', $player->id)->count()]);
         }
 
-        return view('interaccion_usuarios.repetidos', compact('jugadores','repetidosAgrupados'));
+        if ( $jugadores == null ) {
+            Alert::error('Lo siento...', 'No tienes ningún cromo repetido');
+            return redirect( 'users/index' );
+        } else {
+            return view('interaccion_usuarios.repetidos', compact('jugadores','repetidosAgrupados'));
+        }
     }
 
     /**
@@ -163,8 +170,15 @@ class RepetidoController extends Controller
         }
 
         $actual_user_id = Auth::user()->id;
-        
-        return view( 'interaccion_usuarios.cambiar_repes', compact( 'repes', 'users', 'actual_user_id' ));
+
+        $repesUser = Repetido::where('id_user', Auth::user()->id)->get();
+
+        if ( count($repesUser) == 0 ) {
+            Alert::error('Lo siento...', 'No tienes ningún cromo repetido para intercambiar');
+            return redirect( 'users/index' );
+        } else {
+            return view( 'interaccion_usuarios.cambiar_repes', compact( 'repes', 'users', 'actual_user_id' ));
+        }
     }
 
     public function cambiarRepes( $idUser ) {
