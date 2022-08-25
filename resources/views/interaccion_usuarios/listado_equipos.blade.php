@@ -6,7 +6,7 @@
 <div class="no-wrapper">
     <div class="container withScroll">
         @php($indice=0)
-        @foreach($teams as $team)
+        @foreach($teams as $key => $team)
                 @if($indice % 4 == 0)
                     <div class="fila">
                 @endif
@@ -15,7 +15,7 @@
                         @php($variable = "../../../../" . $team->urlImage)
                         <img src = {{$variable}} width=100 height=100>
                         <h2>{{ $team->name }}</h2>
-                        <h4>{{ $numCards[$team->id-1] }}/4</h4>
+                        <h4>{{ $numCards[$key] }}/{{ count($teams) }}</h4>
                     </a>
                 @php($indice=$indice+1)
             </div>
