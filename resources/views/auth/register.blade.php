@@ -15,7 +15,7 @@
 
                 @error('name')
                     <br>
-                    <small>*{{ $message }}</small>
+                    <small>{{ $message }}</small>
                     <br>
                 @enderror
 
@@ -26,7 +26,7 @@
 
                 @error('email')
                     <br>
-                    <small>*{{ $message }}</small>
+                    <small>{{ $message }}</small>
                     <br>
                 @enderror
 
@@ -37,7 +37,7 @@
 
                 @error('password')
                     <br>
-                    <small>*{{ $message }}</small>
+                    <small>{{ $message }}</small>
                     <br>
                 @enderror
 
@@ -48,7 +48,7 @@
 
                 @error('password_confirmation')
                     <br>
-                    <small>*{{ $message }}</small>
+                    <small>{{ $message }}</small>
                     <br>
                 @enderror
             </div>
