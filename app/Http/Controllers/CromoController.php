@@ -158,7 +158,10 @@ class CromoController extends Controller
             
             Alert::success($mesagge1, $mesagge);
             return redirect()->route('user.index');
-        } 
+        } else {
+            Alert::error("Lo siento", "No tienes las monedas suficientes para comprar este sobre");
+            return redirect()->route('card.vistaComprar');
+        }
     }
 
     public function comprarCromos() {
