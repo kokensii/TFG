@@ -193,7 +193,9 @@ class CromoController extends Controller
             }
         }
 
-        return view('interaccion_usuarios.listado_equipos' , compact('teams', 'numCards'));
+        $cardCounter = 4;
+
+        return view('interaccion_usuarios.listado_equipos' , compact('teams', 'numCards', 'cardCounter'));
     }
 
     /**

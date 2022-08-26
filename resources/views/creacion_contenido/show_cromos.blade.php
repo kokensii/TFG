@@ -5,16 +5,15 @@
 @section('content')
     <div class="wrapper">
         <div class="form-listado">
-            @foreach($cards as $card)
+            @foreach($players as $player)
                 <div class="form-all">
-                    <li>{{$card->name}}</li>
-                    <li><img src="{{ asset($card->urlImage)}}"></li>
-                    <form action="{{ route('card.destroy', $card) }}" method="POST">
+                    <li>{{$player->nombre}}</li>
+                    <form action="{{ route('player.destroy', $player) }}" method="POST">
                         @csrf
                         @method('delete')
                         <input type="submit" value="Eliminar">
                     </form>
-                    <form action="{{ route('card.edit', $card) }}" method="GET">
+                    <form action="{{ route('player.edit', $player) }}" method="GET">
                         @csrf
                         <input type="submit" value="Editar">
                     </form>

@@ -64,7 +64,7 @@ Route::get('card/index', 'App\Http\Controllers\CromoController@vistaEquipo')->na
 
 Route::get('card/index/{id}', 'App\Http\Controllers\CromoController@index')->name('card.index');
 
-Route::get('card/create', 'App\Http\Controllers\CromoController@create')->name('card.create');
+/*  Route::get('card/create', 'App\Http\Controllers\CromoController@create')->name('card.create');
 
 Route::post('card/store', 'App\Http\Controllers\CromoController@store')->name('card.store');
 
@@ -74,11 +74,25 @@ Route::put('card/{card}', 'App\Http\Controllers\CromoController@update')->name('
 
 Route::delete('card/{card}', 'App\Http\Controllers\CromoController@destroy')->name('card.destroy');
 
-Route::get('card/showAll', 'App\Http\Controllers\CromoController@showAll')->name('card.showAll');
+Route::get('card/showAll', 'App\Http\Controllers\CromoController@showAll')->name('card.showAll'); */
 
 Route::get('card/comprar', 'App\Http\Controllers\CromoController@comprarCromos')->name('card.vistaComprar');
 
 Route::post('card/comprar/{numCromos}', 'App\Http\Controllers\CromoController@guardarCromos')->name('card.comprar');
+
+//// Players \\\\
+
+Route::get('card/create', 'App\Http\Controllers\PlayerController@create')->name('player.create');
+
+Route::post('card/store', 'App\Http\Controllers\PlayerController@store')->name('player.store');
+
+Route::get('card/{player}/edit', 'App\Http\Controllers\PlayerController@edit')->name('player.edit');
+
+Route::put('card/{player}', 'App\Http\Controllers\PlayerController@update')->name('player.update');
+
+Route::delete('card/{player}', 'App\Http\Controllers\PlayerController@destroy')->name('player.destroy');
+
+Route::get('card/showAll', 'App\Http\Controllers\PlayerController@showAll')->name('player.showAll');
 
 //// Cuestiones \\\\
 

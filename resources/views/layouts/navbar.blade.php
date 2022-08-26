@@ -52,7 +52,7 @@
 								<input type="checkbox" id="btn-1">
 								<ul>
 									<li><a href="{{ route('team.showAll') }}">Equipos</a></li>
-									<li><a href="{{ route('card.showAll') }}">Cromos</a></li>
+									<li><a href="{{ route('player.showAll') }}">Cromos</a></li>
 									<li><a href="{{ route('question.showAll') }}">Preguntas</a></li>
 									<li><a href="{{ route('round.showAll') }}">Jornadas</a></li>
 								</ul>
@@ -63,7 +63,7 @@
 								<input type="checkbox" id="btn-2">
 								<ul>
 									<li><a href="{{route('team.create')}}">Equipo</a></li>
-									<li><a href="{{route('card.create')}}">Cromo</a></li>
+									<li><a href="{{route('player.create')}}">Cromo</a></li>
 									<li><a href="{{route('question.create')}}">Pregunta</a></li>
 									<li><a href="{{route('round.create')}}">Jornada</a></li>
 								</ul>
@@ -180,7 +180,7 @@
 							<a class="nav-link active" aria-current="page" href="{{ route('team.create')}}">Añadir team</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="{{ route('card.create')}}">Añadir card</a>
+							<a class="nav-link active" aria-current="page" href="{{ route('player.create')}}">Añadir card</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link active" aria-current="page" href="{{ route('question.create')}}">Añadir pregunta</a>

@@ -15,7 +15,7 @@
                         @php($variable = "../../../../" . $team->urlImage)
                         <img src = {{$variable}} width=100 height=100>
                         <h2>{{ $team->name }}</h2>
-                        <h4>{{ $numCards[$key] }}/{{ count($teams) }}</h4>
+                        <h4>{{ $numCards[$key] }}/{{ $cardCounter }}</h4>
                     </a>
                 @php($indice=$indice+1)
             </div>
