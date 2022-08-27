@@ -46,6 +46,7 @@ class BetRoundUserController extends Controller
 
         $bet = new BetRoundUser;
         $bet->id_round = $lastBet->id;
+        $bet->id_user = Auth::user()->id;
         $bet->result_user_1 = $request['resultado'];
         $bet->result_user_2 = $request['resultado2'];
         $bet->end = true;
@@ -121,7 +122,7 @@ class BetRoundUserController extends Controller
     {
         $user = User::find(Auth::user()->id);
 
-        if($betRound->result == $betRoundUser->result_user_1 && $betRound->result2 == $betRoundUser->result_user_2){
+        if($betRound->result == $betRoundUser->result_user_1 && $betRound->result_2 == $betRoundUser->result_user_2){
             $user->coin += 100;
             $acierto = true;
             $user->save();
@@ -132,7 +133,7 @@ class BetRoundUserController extends Controller
 
     public function isBetDone()
     {
-        $allBetRound = BetRound::all();
+        /* $allBetRound = BetRound::all();
         $betRound = $allBetRound->last(); // Admin bet
         $allBetRoundUser = BetRoundUser::all();
         $betRoundUser = $allBetRoundUser->last(); // User lastbet
@@ -165,7 +166,63 @@ class BetRoundUserController extends Controller
             }else{
                 return view('interaccion_usuarios.play_porra', compact('betRound', 'teams')); //FUNCIONA
             }
+         */
+
+        // Última porra subida
+        $betRound = BetRound::all()->last();
+        // Apuesta del usuario en la última porra
+        $betRoundUser = BetRoundUser::where('id_user', Auth::user()->id)->where('id_round', $betRound->id)->get();
+        // Todos los equipos
+        $teams = Team::all();
+
+        $local = array();
+        $away = array();
+
+        foreach ( $teams as $team ) {
+            if ( $team->id == $betRound->id_home_team || $team->id == $betRound->id_home_team_2 ) {
+                array_push( $local, $team->name );
+            } else if ( $team->id == $betRound->id_away_team || $team->id == $betRound->id_away_team_2 ) {
+                array_push( $away, $team->name );
+            }
         }
+
+        if ( empty($betRound) ) {
+            Alert::info('Atento', 'No hay ninguna porra en juego')->autoclose(3500);
+            return view('users.index');
+        } else {
+            if ( count($betRoundUser) > 0 ) {
+                if ( $betRoundUser[0]->end ) {
+                    if ( !$betRound->end ) {
+                        Alert::info('Atento', 'Ya has hecho la porra de la semana')->autoclose(3500);
+                        return view('users.index');
+                    } else {
+                        if ( !$betRound->done ) {
+                            $acierto = $this->addCoins($betRoundUser[0], $betRound);
+                            $betRound->save();
+
+                            if ( $acierto ) {
+                                Alert::success('Enhorabuena!', 'Has ganado la porra de la semana');
+                                return redirect()->route('user.index');
+                            } else {
+                                Alert::error('Lo siento...', 'No has acertado la porra de la semana');
+                            }
+                        } else {
+                            Alert::info('Porra finalizada', 'Estamos haciendo la porra de la semana siguiente');
+                        }
+                        return view('users.index');
+                    }
+                } else {
+                    if ( $betRound->end ) {
+                        Alert::info('Atento', 'El tiempo de hacer la porra de esta semana finalizó')->autoclose(3500);
+                        return view('users.index');
+                    }
+                    return view('interaccion_usuarios.play_porra', compact('betRound', 'teams'));
+                }
+            } else {
+                return view('interaccion_usuarios.play_porra', compact('betRound', 'teams', 'local', 'away'));
+            }
+        }
+        
     }
 
     public function porra(Request $request, BetRound $betRound)

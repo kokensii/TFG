@@ -10,7 +10,7 @@
                 @csrf
                 <div class="form-details">
                     <div class="input-box">
-                        <span class="details">{{ $teams[$betRound->id_home_team - 1]->name }} vs {{ $teams[$betRound->id_away_team - 1]->name }}</span>
+                        <span class="details">{{ $local[1] }} vs {{ $away[1] }}</span>
                         <select name="resultado">
                             <option value="1">1</option>
                             <option value="X">X</option>
@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="input-box">
-                        <span class="details">{{ $teams[$betRound->id_home_team_2 - 1]->name }} vs {{ $teams[$betRound->id_away_team_2 - 1]->name }}</span>
+                        <span class="details">{{ $local[0] }} vs {{ $away[0] }}</span>
                         <select name="resultado2">
                             <option value="1">1</option>
                             <option value="X">X</option>

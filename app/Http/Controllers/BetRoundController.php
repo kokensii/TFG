@@ -119,7 +119,6 @@ class BetRoundController extends Controller
         $bets = BetRoundUser::all();
         $bet = $bets->last();
         
-
         if($betRound->end){
             $acierto = $this->addCoins($bet, $betRound);
 
