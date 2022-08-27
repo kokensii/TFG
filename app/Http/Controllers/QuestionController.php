@@ -136,8 +136,15 @@ class QuestionController extends Controller
     public function answer()
     {
         // Solo vamos a tener una cuestión por día, así que cogemos todas las cuestiones que será solo una
-        $questions = Question::all()[0];
+        $questions = Question::all();
         $answer = UserAnswer::where('id_user', Auth::user()->id)->get();
+
+        if ( count($questions) == 0 ) {
+            Alert::info('Atento', 'Ahora mismo no hay preguntas para responder')->autoclose(3500);
+            return view('users.index');
+        } else {
+            $questions = $questions[0];
+        }
 
         if ( count($answer) > 0 ) {
             Alert::info('Atento', 'Ya has respondido la pregunta de hoy')->autoclose(3500);
