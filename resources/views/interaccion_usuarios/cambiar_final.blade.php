@@ -8,17 +8,23 @@
             <div class="form-details">
                 <form action="{{ route( 'repes.cambioFinal' ) }}" method="POST">
                     @csrf
-                    <select name="ofrecido">
-                        @foreach( $ofrecidos as $cromo )
-                            <option value={{$cromo->id}}>{{ $cromo->name }}</option>
-                        @endforeach
-                    </select>
+                    <p>
+                        Entrego:
+                        <select name="ofrecido">
+                            @foreach( $ofrecidos as $cromo )
+                                <option value={{$cromo->id}}>{{ $cromo->name }}</option>
+                            @endforeach
+                        </select>
+                    </p>
     
-                    <select name="pedido">
-                        @foreach( $pedidos as $cromo )
-                            <option value={{$cromo->id}}>{{ $cromo->name }}</option>
-                        @endforeach
-                    </select>
+                    <p>
+                        Recibo:
+                        <select name="pedido">
+                            @foreach( $pedidos as $cromo )
+                                <option value={{$cromo->id}}>{{ $cromo->name }}</option>
+                            @endforeach
+                        </select>
+                    </p>
     
                     <button class="custom-button">Cambiar</button>
                 </form>
