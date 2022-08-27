@@ -33,7 +33,6 @@ class RepetidoController extends Controller
 
         $repetidosAgrupados = collect();
 
-
         foreach($repetidos as $repetido) {
             if($repetido->id_user == Auth::user()->id) {
                 array_push($jugadores, $players[$repetido->id_player-1]);

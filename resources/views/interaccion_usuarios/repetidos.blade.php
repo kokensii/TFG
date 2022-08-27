@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="no-wrapper">
-    <div class="container withScroll">
+    <div class="container">
             @php($indice=0)
             @foreach($repetidosAgrupados as $agrupados)        
                 @php($encontrado = false)
