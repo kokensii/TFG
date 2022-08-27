@@ -135,49 +135,30 @@ class QuestionController extends Controller
 
     public function answer()
     {
-        $questions = Question::first();
-        $questionAll = Question::all();
-        $users = UserAnswer::all();
-        $userAnswer = $users->last();
-        $i = 0;
+        // Solo vamos a tener una cuestión por día, así que cogemos todas las cuestiones que será solo una
+        $questions = Question::all()[0];
+        $answer = UserAnswer::where('id_user', Auth::user()->id)->get();
 
-        $numQuestions = count($questionAll);
-
-        if(!empty($userAnswer->id)){
-            while($i < $numQuestions && $questions->id <= $userAnswer->id_question){
-                $questions = $this->nextQuestion($questions);
-                $i = $i + 1;
-            }
-        }
-
-        if($i == $numQuestions){
-            Alert::info('Atento', 'Ya has respondido todas las preguntas de esta semana')->autoclose(3500);
+        if ( count($answer) > 0 ) {
+            Alert::info('Atento', 'Ya has respondido la pregunta de hoy')->autoclose(3500);
             return view('users.index');
+        } else {
+            return view('interaccion_usuarios.answer_question', compact('questions'));
         }
-
-        return view('interaccion_usuarios.answer_question', compact('questions'));
     }
 
     public function isCorrect(Request $request, Question $question)
     {
-        $userAnswer = $this->storeUserAnswer($request, $question);
+        $this->storeUserAnswer($request, $question);
 
         $acierto = $this->addCoins($request, $question);
 
-        $next = $this->nextQuestion($question);
-
-        $questions = $next;
-
-        if($acierto){
+        if ( $acierto ) {
             Alert::success('Enhorabuena!', 'Tu respuesta ha sido correcta')->autoclose(3500);
-        }else Alert::error('Lo siento...', 'La respuesta ha sido incorrecta')->autoclose(3500);
-
-        if($next != null) return view('interaccion_usuarios.answer_question', compact('questions'));
-        else {
-            return view('users.index');
+        } else {
+            Alert::error('Lo siento...', 'La respuesta ha sido incorrecta')->autoclose(3500);
         }
 
-        /*return redirect()->route('questionUser.answer', $question);*/
-        
+        return redirect()->route('user.index');
     }
 }
