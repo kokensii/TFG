@@ -7,7 +7,7 @@
         <div class="form-listado">
             @foreach($questions as $question)
                 <div class="form-all">
-                    <li>{{ $question->id }}</li>
+                    <li>{{ $question->question }}</li>
                     <form action="{{ route('question.destroy', $question) }}" method="POST">
                         @csrf
                         @method('delete')
