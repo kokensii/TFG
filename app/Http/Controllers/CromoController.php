@@ -180,7 +180,14 @@ class CromoController extends Controller
         $numCards = array_fill(0, count($teams), 0);
 
         foreach ( $players as $player ) {
-            array_push( $array_players, Player::where('id', $player->id_player)->get()[0] );
+            array_push( $array_players, Player::orderBy('id_equipo')->where('id', $player->id_player)->get()[0] );
+        }
+
+        //array_multisort('id_equipo', SORT_DESC, $array_players);
+        $indices = collect();
+
+        foreach ( $teams as $key => $team ) {
+            $indices = $indices->push((object)['id' => $key, 'id_equipo' => $team->id]);
         }
 
         $j = 1;
@@ -188,8 +195,13 @@ class CromoController extends Controller
             if ( ($j) == $array_players[$i]->id_equipo ) {
                 $numCards[$j-1]++;
             } else {
-                $j = $array_players[$i]->id_equipo;
-                $numCards[$j-1]++;
+                for ( $z = 0; $z < count( $indices ); $z++ ) {
+                    if ($indices[$z]->id_equipo == $array_players[$i]->id_equipo ) {
+                        $j = $indices[$z]->id;
+                    }
+                }
+                //$j = $array_players[$i]->id_equipo;
+                $numCards[$j]++;
             }
         }
 
