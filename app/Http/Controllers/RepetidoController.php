@@ -267,15 +267,6 @@ class RepetidoController extends Controller
     }
 
     public function cambioFinal ( Request $request ) {
-        // $ofrecido = cromo que ofrece el user
-        // $pedido = cromo que pide el user ha cambio del suyo
-        /* $bet = new BetRoundUser;
-        $bet->id_round = $lastBet->id;
-        $bet->result_user_1 = $request['resultado'];
-        $bet->result_user_2 = $request['resultado2'];
-        $bet->end = true;
-        $bet->save(); */
-        //return "Hola";
         $ofrecido = Repetido::where('id', $request['ofrecido'])->get();
         $pedido = Repetido::where('id', $request['pedido'])->get();
 
@@ -283,18 +274,19 @@ class RepetidoController extends Controller
         $cardOtherUser = new Card;
 
         $cardOtherUser->id = $ofrecido[0]->id;
-        $cardOtherUser->id_user = $ofrecido[0]->id_user;
+        $cardOtherUser->id_user = $pedido[0]->id_user;
         $cardOtherUser->id_player = $ofrecido[0]->id_player;
         $cardOtherUser->save();
 
         $cardUser->id = $pedido[0]->id;
-        $cardUser->id_user = $pedido[0]->id_user;
+        $cardUser->id_user = $ofrecido[0]->id_user;
         $cardUser->id_player = $pedido[0]->id_player;
         $cardUser->save();
 
         Repetido::where('id', $ofrecido[0]->id)->delete(); 
         Repetido::where('id', $pedido[0]->id)->delete();
 
+        Alert::success('Enhorabuena', 'Cambio realizado con éxito');
         return redirect( 'users/index' );
     }
 }
