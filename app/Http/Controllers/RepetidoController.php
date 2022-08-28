@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Card;
+use App\Models\Cambio;
 use App\Models\Team;
 use App\Models\Player;
 use App\Models\Repetido;
@@ -285,6 +286,15 @@ class RepetidoController extends Controller
 
         Repetido::where('id', $ofrecido[0]->id)->delete(); 
         Repetido::where('id', $pedido[0]->id)->delete();
+
+        $cambio = new Cambio;
+
+        $doy = Player::select('nombre')->where('id', $pedido[0]->id_player)->get();
+        $cambio->doy = $doy[0]->nombre;
+        $recibo = Player::select('nombre')->where('id', $ofrecido[0]->id_player)->get();
+        $cambio->recibo = $recibo[0]->nombre;
+        $cambio->id_user = $pedido[0]->id_user;
+        $cambio->save();
 
         Alert::success('Enhorabuena', 'Cambio realizado con éxito');
         return redirect( 'users/index' );

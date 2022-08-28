@@ -133,41 +133,6 @@ class BetRoundUserController extends Controller
 
     public function isBetDone()
     {
-        /* $allBetRound = BetRound::all();
-        $betRound = $allBetRound->last(); // Admin bet
-        $allBetRoundUser = BetRoundUser::all();
-        $betRoundUser = $allBetRoundUser->last(); // User lastbet
-        $teams = Team::all();
-
-        if(empty($betRound)){
-            Alert::info('Atento', 'No hay ninguna porra en juego')->autoclose(3500);
-            return view('users.index'); //FUNCIONA
-        }else{
-            if(!empty($betRoundUser)){
-                if($betRoundUser->end){
-                    if($betRoundUser->id_round == $betRound->id){
-                        if(!$betRound->end){
-                            Alert::info('Atento', 'Ya has hecho la porra de la semana')->autoclose(3500);
-                            return view('users.index');//FUNCIONA
-                        }else{
-                            if(!$betRound->done){
-                                $acierto = $this->addCoins($betRoundUser, $betRound);
-                                $betRound->done = true;
-                                $betRound->save();
-                                if($acierto){
-                                    Alert::success('Enhorabuena!', 'Has ganado la porra de la semana');
-                                }else Alert::error('Lo siento...', 'No has acertado la porra de la semana');
-                            }else Alert::info('Porra finalizada', 'Estamos haciendo la porra de la semana siguiente');
-                            return view('users.index');
-                        }
-                    }
-                    else return view('interaccion_usuarios.play_porra', compact('betRound', 'teams')); //FUNCIONA
-                }
-            }else{
-                return view('interaccion_usuarios.play_porra', compact('betRound', 'teams')); //FUNCIONA
-            }
-         */
-
         // Última porra subida
         $betRound = BetRound::all()->last();
         // Apuesta del usuario en la última porra

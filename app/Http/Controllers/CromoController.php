@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cambio;
 use Illuminate\Http\Request;
 use App\Models\Card;
 use App\Models\Team;
@@ -172,6 +173,29 @@ class CromoController extends Controller
     }
 
     public function vistaEquipo(){
+
+        $cambios = Cambio::where('id_user', Auth::user()->id)->get();
+
+        $ofrecidos = array();
+        $recibidos = array();
+
+        foreach ( $cambios as $cambio ) {
+            array_push( $ofrecidos, $cambio->doy );
+            array_push( $recibidos, $cambio->recibo );
+        }
+
+        return "Hola";
+
+        if ( count( $ofrecidos ) > 0 ) {
+            $mensaje = "has dado a ";
+            $mensaje2 = "has recibido a ";
+            for ( $i = 0; $i < count($ofrecidos); $i++ ) {
+                $mensaje += $ofrecidos[$i] + " ";
+                $mensaje2 += $recibidos[$i] + " ";
+            }
+
+            Alert::success("Se ha producido un cambio", $mensaje + $mensaje2);
+        }
 
         $teams = Team::get();
         //User::select('name')->where('id', $idUser->id_user)->get();

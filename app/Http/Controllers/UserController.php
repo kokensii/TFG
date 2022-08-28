@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cambio;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -13,7 +16,30 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $cambios = Cambio::where('id_user', Auth::user()->id)->get();
+
+        $ofrecidos = array();
+        $recibidos = array();
+
+        foreach ( $cambios as $cambio ) {
+            array_push( $ofrecidos, $cambio->doy );
+            array_push( $recibidos, $cambio->recibo );
+        }
+
+        if ( count( $ofrecidos ) > 0 ) {
+            $mensaje = "has dado a ";
+            $mensaje2 = "y has recibido a ";
+            for ( $i = 0; $i < count($ofrecidos); $i++ ) {
+                $mensaje .= $ofrecidos[$i] . " ";
+                $mensaje2 .= $recibidos[$i] . " ";
+            }
+
+            Alert::success("Se ha producido un cambio", $mensaje . $mensaje2);
+
+            Cambio::where('id_user', Auth::user()->id)->delete();
+        }
+        
         return view('users.index');
     }
 
