@@ -8,11 +8,11 @@
             @php($indice=0)
             @foreach($repetidosAgrupados as $agrupados)        
                 @php($encontrado = false)
-                @if($indice % 4 == 0)
-                    <div class="fila">
-                @endif
                 @foreach($jugadores as $jugador)
                     @if($agrupados->id_player == $jugador->id && $encontrado==false)
+                        @if($indice % 4 == 0)
+                            <div class="fila">
+                        @endif
                         <div class="columna">
                             @php($variable = "../../../../" . $jugador->url_imagen)
                             <img src = {{$variable}} width=200 height=150>
@@ -20,11 +20,12 @@
                             @php($encontrado = true)
                             @php($indice=$indice+1)
                         </div>
+                        @if($indice % 4 == 0)
+                            </div>
+                        @endif
                     @endif
                 @endforeach
-                @if($indice % 4 == 0)
-                </div>
-                @endif
+                
             @endforeach
     </div>
 </div>
